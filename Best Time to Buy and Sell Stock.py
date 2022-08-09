@@ -11,7 +11,8 @@ class Solution:
                 maxSale = prices[i]
         return maxProfit
       
-  # Solution : 2
+# Solution : 2 [Kadane's algorithm (DP)]
+# Remember the past computation result and update value only if the current value contirbutes positively towards what we want to achieve.
   
   
 class Solution:
@@ -27,3 +28,4 @@ class Solution:
             buy = sell
           sell += 1
         return maxProfit
+    
