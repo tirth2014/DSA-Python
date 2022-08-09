@@ -29,3 +29,11 @@ class Solution:
           sell += 1
         return maxProfit
     
+# Solution - 3:
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        maxProfit, buy = 0,prices[0]
+        for i in range(len(prices)):
+            maxProfit = max(maxProfit, prices[i] - buy)
+            buy = min(buy,prices[i])
+        return maxProfit
