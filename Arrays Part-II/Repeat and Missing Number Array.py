@@ -32,3 +32,27 @@ class Solution:
         return [r,m]
       
 # Approach - 3:
+
+class Solution:
+    def repeatedNumber(self, A):
+        r, m = 0, 0
+        xor1 = A[0]
+        for i in range(1, len(A)):
+            xor1 ^= A[i]
+
+        for i in range(1, len(A) + 1):
+            xor1 ^= i
+
+        set_bit_no = xor1 & ~(xor1 - 1)
+
+        for i in range(len(A)):
+            if A[i] & set_bit_no != 0:
+                r ^= A[i]
+            else:
+                m ^= A[i]
+        for i in range(1, len(A) + 1):
+            if i & set_bit_no != 0:
+                r ^= i
+            else:
+                m ^= i
+        return [r, m]
