@@ -26,3 +26,9 @@ class Solution:
             else:
                 cnt -= 1
         return ele              
+
+# Sorting - O(nlogn)
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        nums.sort()
+        return nums[len(nums)//2]
