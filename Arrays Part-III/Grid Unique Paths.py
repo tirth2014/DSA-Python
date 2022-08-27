@@ -30,7 +30,7 @@ class Solution:
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         dp = [[1]*n for i in range(m)]
-        for i,j in product(range(1,m), range(1,n)):          # Iterate over cartesian product of given iterable i.e. matrix
+        for i,j in product(range(1,m), range(1,n)):          # Iterate over cartesian product of given iterable i.e. matrix - itertools.product()
             dp[i][j] = dp[i-1][j] + dp[i][j-1]              # Current cell = top cell + left cell
         return dp[-1][-1]                                   # Return the last cell
     
