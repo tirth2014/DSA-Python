@@ -42,7 +42,8 @@ class Solution:
                 k += 1
         return count
       
-# T.C : O(NlogN) + O(N) + O(N)                
-            
+# T.C : O(NlogN) + O(N) + O(N)          
+
+# Using BinaryIndexTree (Fenwick Tree): (To be Solved)            
                     
                 
