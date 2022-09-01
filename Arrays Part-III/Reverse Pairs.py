@@ -1,4 +1,4 @@
-# Using Enhanced MergeSort
+# Using Enhanced MergeSort - O(NlogN) time and O(N) space
 
 class Solution:
     def reversePairs(self, arr):
@@ -44,6 +44,42 @@ class Solution:
       
 # T.C : O(NlogN) + O(N) + O(N)          
 
-# Using BinaryIndexTree (Fenwick Tree): (To be Solved)            
+# Using BinaryIndexTree (Fenwick Tree): O(NlogN) time complexity & O(N) space   
+
+class Solution:
+    class BIT:
+        def __init__(self, n):
+            self.n = n
+            self.bit = [0] * (self.n + 1)
+
+        def update(self, i, x):
+            while i <= self.n:
+                self.bit[i] += x  # (i&-i,i) gives the first rightmost SET bit of the number in binary
+                i += i & -i
+
+        def sum(self, i):
+            ans = 0
+            while i > 0:
+                ans += self.bit[i]
+                i -= i & -i
+            return ans
+
+    def reversePairs(self,nums):
+        nnums = list(set(nums + [2*x for x in nums]))  # Note:  list1 + list2 = Appended list (NOT Sum of elements from both list)
+        print("new nums: ", nnums)
+        nnums.sort()
+        print("sorted nn: ", nnums)
+        tree = self.BIT(len(nnums))
+        print("BIT is: ",tree.bit)
+        res = 0
+        ranks = {}
+        for i, n in enumerate(nnums):
+            ranks[n] = i + 1
+        print("Ranks: ",ranks)
+        for n in nums[::-1]:
+            res += tree.sum(ranks[n] - 1)
+            tree.update(ranks[n * 2], 1)
+        return res
                     
+                                    
                 
