@@ -36,6 +36,22 @@ class Solution:
                 return [d[dif], i]
             else:
                 d[n] = i
-        
+                
+# Using Two Pointer Approach:  O(N + NlogN) time and O(N) space
+class Solution:
+    def twoSum(self, nums, target):
+        arr = []
+        for i, n in enumerate(nums):
+            arr.append([n, i])
+        arr.sort()
+        l, r = 0, len(arr) - 1
+        while l < r:
+            temp_sum = arr[l][0] + arr[r][0]
+            if temp_sum == target:
+                return [arr[l][1], arr[r][1]]
+            elif target > temp_sum:
+                l += 1
+            elif target < temp_sum:
+                r -= 1
               
         
