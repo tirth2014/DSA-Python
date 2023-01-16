@@ -1,4 +1,6 @@
 # DECORATORS EXAMPLE:
+# LearnHere: https://book.pythontips.com/en/latest/decorators.html
+
 
 def im_decorator(a_fun):
     def wrapperFun():
