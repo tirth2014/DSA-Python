@@ -13,6 +13,7 @@ def fun_i_need_decoration():
     print("I'm the function that needs some beautiful flower decoration to remove my foul smell!")
 
 fun_i_need_decoration = im_decorator(fun_i_need_decoration)   # Decorator in simple terms
+# Now, fun_i_need_decoration() is wrapped inside the wrapperFun()
 
 print("------------↑ and ↓ both are same!------------------")
 
