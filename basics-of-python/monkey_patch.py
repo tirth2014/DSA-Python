@@ -9,7 +9,7 @@ class A:
 def sayHello(self):
     print('hello there!')
 
-A.sayHi = sayHello
+A.sayHi = sayHello  # Changed the location of function sayHi() with location of function sayHello()
 
 obj = A()
 obj.sayHi() # hello there!
