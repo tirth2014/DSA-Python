@@ -1,9 +1,10 @@
 def mergeSort(arr):
     if len(arr) > 1:
-        mid = len(arr) // 2
-        L = arr[:mid]
+        mid = len(arr) // 2   # Floor division of length of array
+        L = arr[:mid]        
         R = arr[mid:]
-
+        
+        # Recursively call mergeSort function on left and right subarrays respectively till array is not broken in singleton elements.
         mergeSort(L)
         mergeSort(R)
 
