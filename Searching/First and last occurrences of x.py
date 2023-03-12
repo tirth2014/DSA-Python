@@ -37,9 +37,6 @@ def find(arr,n,x):
     last =  lastOccurence(arr,n,x)
     return first,last
         
-    
-
-
 
 #{ 
  # Driver Code Starts
