@@ -1,5 +1,5 @@
 """
-Method 2: We can use sorting and Binary Search to improve time complexity to O(nLogn). 
+Method 1: We can use sorting and Binary Search to improve time complexity to O(nLogn). 
 The first step is to sort the array in ascending order. Once the array is sorted, 
 traverse the array from left to right, and for each element arr[i], binary search for arr[i] + n in arr[i+1..n-1].
 If the element is found, return the pair. Both first and second steps take O(nLogn).
@@ -24,7 +24,7 @@ class Solution:
                 
 
 """
-Method 3: The second step of the Method -2 can be improved to O(n). The first step remains the same(sorting). 
+Method 2: The second step of the Method -2 can be improved to O(n). The first step remains the same(sorting). 
 The idea for the second step is to take two index variables i and j, and initialize them as 0 and 1 respectively. 
 Now run a linear loop. If arr[j] – arr[i] is smaller than n, we need to look for greater arr[j], so increment j. 
 If arr[j] – arr[i] is greater than n, we need to look for greater arr[i], so increment i. 
