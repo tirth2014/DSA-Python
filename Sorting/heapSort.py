@@ -3,7 +3,7 @@ def heapify(arr, N, i):
     l = 2 * i + 1
     r = 2 * i + 2
     # left child = 2*i + 1
-    # left child = 2*i + 2
+    # right child = 2*i + 2
 
     # See if left child of root exist and is greater than root
     if l < N and arr[largest] < arr[l]:
