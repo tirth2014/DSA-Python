@@ -1,3 +1,21 @@
+"""
+Heapify: Heapify is an algorithm used to build a heap data structure from an array. 
+A heap is a specialized binary tree-based data structure that satisfies the heap property, which states that the parent node is always greater than or equal to (in a max-heap) or less than or equal to (in a min-heap) its children nodes.
+The heapify algorithm takes an array and reorders its elements so that they form a heap. 
+It works by starting from the middle of the array and iterating backwards through its elements, calling the sift-down operation on each one. 
+The sift-down operation compares the current node with its children nodes, and if necessary, swaps it with the larger (in a max-heap) or smaller (in a min-heap) child node, and continues recursively until the heap property is satisfied.
+Heapify is an efficient algorithm, with a time complexity of O(n), where n is the length of the array. 
+This is because it only needs to perform the sift-down operation on the non-leaf nodes of the binary tree, which are roughly half of the total number of nodes.
+
+=> Why heapify starts from middle of an array?
+Heapify starts from the middle of the array and not from the beginning (index 0) because of the way that heaps are represented as binary trees in memory.
+
+If we start heapify from the last non-leaf node and work our way backwards towards the root, we ensure that the children of every node we visit have already been heapified. 
+This is because we're moving from the bottom-up in the tree, and we're heapifying the nodes as we go.
+This makes the algorithm more efficient, because we only need to perform the sift-down operation on the non-leaf nodes of the binary tree.
+If we started at index 0 and worked our way forwards, we would be heapifying nodes whose children have not yet been heapified, which could lead to violations of the heap property.
+"""
+
 def heapify(arr, N, i):
     largest = i  # i = root
     l = 2 * i + 1
