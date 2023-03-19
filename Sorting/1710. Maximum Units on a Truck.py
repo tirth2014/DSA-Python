@@ -17,12 +17,16 @@ class Solution:
 
     
 """
-Time complexity is O(n log n), where n is the length of the boxTypes list. The heapify operation takes O(n) time and each heappop operation takes O(log n) time. The while loop will run at most n times, since we remove one box type from the heap in each iteration, so the overall time complexity is O(n log n).
+Time complexity is O(n log n), where n is the length of the boxTypes list. 
+The heapify operation takes O(n) time and each heappop operation takes O(log n) time. 
+The while loop will run at most n times, since we remove one box type from the heap in each iteration, so the overall time complexity is O(n log n).
 
 Space complexity is O(n)
 
 Approach:-
-Negate the values of the second element of each box type when adding them to the heap, so that the smallest value of the negated second elements will correspond to the box type with the largest second element. Then, when you remove and return the box types from the heap using heapq.heappop, you can negate the second element again to get the correct value.
+Negate the values of the second element of each box type when adding them to the heap, 
+so that the smallest value of the negated second elements will correspond to the box type with the largest second element. 
+Then, when you remove and return the box types from the heap using heapq.heappop, you can negate the second element again to get the correct value.
 """
 import heapq
 
