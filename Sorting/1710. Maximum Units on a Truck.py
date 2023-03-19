@@ -1,3 +1,4 @@
+# Greedy Algorithm
 # Time Complexity = O(n log n)
 # Space Complexity = O(n) as py3 uses tim sort
 class Solution:
@@ -5,6 +6,7 @@ class Solution:
         boxTypes = sorted(boxTypes,key=lambda x: x[1],reverse=True)
         max_units = 0
         i = 0
+#         Greedily take as many boxes as we want from available boxes of particular type till truckSize becomes zero or till there are no boxes left.
         while truckSize > 0 and i<len(boxTypes):
             arri = boxTypes[i]
             selected_boxes = min(arri[0],truckSize)
