@@ -1,4 +1,5 @@
 # Time Complexity = O(n log n)
+# Space Complexity = O(n) as py3 uses tim sort
 class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
         boxTypes = sorted(boxTypes,key=lambda x: x[1],reverse=True)
