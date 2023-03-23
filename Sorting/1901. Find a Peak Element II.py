@@ -1,8 +1,10 @@
-# Time complexity: O(mn log n), where m and n are the dimensions of the input matrix. 
-# The algorithm sorts each row of the matrix, which takes O(n log n) time. This is done for each of the m rows, resulting in a time complexity of O(mn log n).
-# Space complexity: O(n), where n is the length of each row in the input matrix. 
-# The algorithm only keeps track of the maximum values of each row and the values of the neighboring elements, which requires a constant amount of memory per row. Therefore, the space complexity is O(n).
-
+# Search for a peak element in a 2D matrix using SORTING.
+"""
+Time complexity: O(mn log n), where m and n are the dimensions of the input matrix. 
+The algorithm sorts each row of the matrix, which takes O(n log n) time. This is done for each of the m rows, resulting in a time complexity of O(mn log n).
+Space complexity: O(n), where n is the length of each row in the input matrix. 
+The algorithm only keeps track of the maximum values of each row and the values of the neighboring elements, which requires a constant amount of memory per row. Therefore, the space complexity is O(n).
+"""
 class Solution:
 
     def findPeakGrid(self, mat: List[List[int]]) -> List[int]:
@@ -29,7 +31,7 @@ class Solution:
                 continue
                 
                 
-# Search for a peak element in a 2D matrix using binary search.
+# Search for a peak element in a 2D matrix using BINARY SEARCH.
 
 """
 Time complexity: O(mlog(n)), where m is the number of rows and n is the number of columns in the matrix. 
