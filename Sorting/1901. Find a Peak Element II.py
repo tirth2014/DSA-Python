@@ -27,3 +27,56 @@ class Solution:
                 return [i,j]
             else:
                 continue
+                
+                
+# Search for a peak element in a 2D matrix using binary search.
+
+"""
+Time complexity: O(mlog(n)), where m is the number of rows and n is the number of columns in the matrix. 
+The binary search algorithm takes O(log(n)) time to find the middle column and the linear search for the largest element in the middle column takes O(m) time. 
+Therefore, the total time complexity is O(mlog(n)).
+
+Space complexity: O(1). 
+"""
+class Solution:
+    def findPeakGrid(self, mat: List[List[int]]) -> List[int]:
+        m = len(mat)
+        n = len(mat[0])
+
+        start,end = 0, n-1
+
+        while start <= end:   # Binary Search Column Wise
+            mid_col = start + (end-start) // 2
+            
+            # Finding the largest element in the middle Column
+            row_ind, currMax = 0,float('-inf')
+            for i in range(m):
+                if mat[i][mid_col] > currMax:
+                    currMax = mat[i][mid_col]
+                    row_ind = i
+                
+            # Checking the adjacent elements:
+            isLeftBig = mid_col > start and mat[row_ind][mid_col-1] > mat[row_ind][mid_col]            
+            isRightBig = mid_col < end and mat[row_ind][mid_col+1] > mat[row_ind][mid_col]
+            
+            if not isLeftBig and not isRightBig:
+                return [row_ind,mid_col]
+            
+            elif isLeftBig:
+                end = mid_col - 1
+            
+            else:
+                start = mid_col + 1
+    
+
+
+        
+
+
+
+            
+
+
+
+
+                        
