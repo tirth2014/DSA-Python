@@ -10,7 +10,7 @@ class Solution:
                 total += num
                 if total > threshold:  # Total sum of current subarray is greater than threshold...so we must put this num in next subarray
                     total = num
-                    cnt += 1   # Counts the length of current subarray
+                    cnt += 1   # Counts the number of subarrays
                     if cnt > k: return False # Number of subarrays exceeds k
             return True 
         
