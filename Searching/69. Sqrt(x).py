@@ -41,3 +41,22 @@ class Solution:
             temp = res
             res = temp - (temp*temp-x)/(2*temp)
         return math.floor(res)
+    
+    
+    
+# BINARY SEARCH TEMPLATE:
+"""
+There's one thing I'd like to point out. Remember I say that we usually look for the minimal k value satisfying certain condition? 
+But in this problem we are searching for maximal k value instead. Feeling confused? Don't be. 
+Actually, the maximal k satisfying condition(k) is False is just equal to the minimal k satisfying condition(k) is True minus one. 
+"""
+
+def mySqrt(x: int) -> int:
+    left, right = 0, x
+    while left < right:
+        mid = left + (right - left) // 2
+        if mid * mid <= x:
+            left = mid + 1
+        else:
+            right = mid
+    return left - 1
