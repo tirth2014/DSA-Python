@@ -38,3 +38,13 @@ def print_1_to_n_backtracking(i,n):
     
 print_1_to_n_backtracking(10,10)
 
+
+
+# PRINT N TO 1 WITH BACKTRACK:
+def print_n_to_1_backtracking(i,n):
+    if i > n:
+        return
+    print_n_to_1_backtracking(i+1 , n)
+    print(i,end=" ")
+
+print_n_to_1_backtracking(1,5)
