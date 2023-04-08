@@ -1,3 +1,5 @@
+# Ref: https://www.youtube.com/watch?v=AxNNVECce8c&list=PLgUwDviBIf0rGlzIn_7rsaR2FQ5e6ZOL9&index=6 [Striver - L6. Recursion on Subsequences | Printing Subsequences]
+
 # Print all non-contagious subsequences using recursion.
 def get_subsequences(i,ds,arr,n):
     # BASE CASE
