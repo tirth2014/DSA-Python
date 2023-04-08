@@ -23,3 +23,10 @@ if __name__ == '__main__':
     get_subsequences(0,ds,a,len(a))
     
 # OUTPUT: [3, 1, 2]  [3, 1]  [3, 2]  [3]  [1, 2]  [1]  [2]  [] 
+
+
+# TIME COMPLEXITY
+# Exponential - O(2^n) as at each index 2 recursive calls are made: one with current index picked and another without picked.
+
+# SPACE COMPLEXITY
+# O(n) which is depth of the recursion tree
