@@ -13,7 +13,7 @@ def get_subsequences(i,ds,arr,n):
     get_subsequences(i+1,ds,arr,n)
     ds.remove(arr[i])
 
-    # Case-2: Not Take/Pick the particular index into the subsequence
+    # Case-2: Not Take/Not Pick the particular index into the subsequence
     get_subsequences(i+1,ds,arr,n)
 
 
