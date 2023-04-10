@@ -22,3 +22,5 @@ ob = Solution()
 arr = [1,3,2,2,5,2,3,7]
 k=7
 ob.one_subsequences_sum_k(0,arr,k,len(arr))
+
+# OUTPUT:  [1, 3, 3]
