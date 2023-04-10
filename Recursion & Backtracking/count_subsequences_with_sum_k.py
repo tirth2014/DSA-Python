@@ -44,3 +44,4 @@ ob = Solution()
 arr = [1, 3, 2, 2, 5, 2, 3, 7]
 k = 7
 print(ob.count_subsequences_with_sum_k(0, arr, k, len(arr)))  # Prints 12
+
