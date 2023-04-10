@@ -45,3 +45,31 @@ arr = [1, 3, 2, 2, 5, 2, 3, 7]
 k = 7
 print(ob.count_subsequences_with_sum_k(0, arr, k, len(arr)))  # Prints 12
 
+
+
+
+# SHORT WAY
+# The function recursively considers two cases for each element in the array: the case where the element is included in the subsequence, and the case where it is excluded.
+# The base case is reached when we have considered all elements in the array. 
+# If the sum of the subsequence is equal to the desired sum k, we return 1 to indicate that a valid subsequence has been found. 
+# If the sum is not equal to k, we return 0 to indicate that no valid subsequence has been found. 
+# The final result is the sum of the number of valid subsequences that include the current element and the number of valid subsequences that don't.
+
+class Solution:
+    def count_subsequences_with_sum_k(self, i, arr, k, n, sum=0):
+        if i == n:
+            if sum == k:
+                return 1
+            return 0
+
+        # Recursively count the number of subsequences that include the current element and the number that don't.
+        return (
+                self.count_subsequences_with_sum_k(i + 1, arr, k, n, sum + arr[i]) +
+                self.count_subsequences_with_sum_k(i + 1, arr, k, n, sum)
+        )
+
+ob = Solution()
+arr = [1, 3, 2, 2, 5, 2, 3, 7]
+k = 7
+print(ob.count_subsequences_with_sum_k(0, arr, k, len(arr)))  # Prints 12
+
