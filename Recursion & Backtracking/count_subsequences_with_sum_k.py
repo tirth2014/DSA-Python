@@ -18,8 +18,10 @@ class Solution:
         """
         # BASE CASE
         if i == n:
-            if sum == k:
+            # Condition satisfied
+            if sum == k: 
                 return 1
+            # Condition not satisfied
             return 0
 
         # PICK CASE
