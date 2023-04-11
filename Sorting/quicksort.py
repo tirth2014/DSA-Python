@@ -21,7 +21,7 @@ class Solution:
             while arr[j] > arr[pivot] and j >= low+1:
                 j-=1
 
-            # If we find both elements i.e. greater on left and smaller on right of pivot then swap them (till this time j hasn't crossed i yet)
+            # if j hasn't crossed i yet and if we find both elements i.e. greater on left and smaller on right of pivot then swap them 
             if i<j:
                 arr[i],arr[j] = arr[j],arr[i]
 
