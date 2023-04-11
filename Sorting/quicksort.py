@@ -36,11 +36,11 @@ class Solution:
         # base case: when the array has more than one element
         if low<high:
             # Place a pivot at it's correct place
-            partition_ind = self.partition(arr,low,high)
+            pI = self.partition(arr,low,high)  # partition_ind
 
             # Recursively perform quicksort on pivot's left and right sub-arrays
-            self.quicksort(arr,low,partition_ind-1)
-            self.quicksort(arr,partition_ind+1,high)
+            self.quicksort(arr,low,pI-1)
+            self.quicksort(arr,pI+1,high)
 
 
 ob = Solution()
@@ -105,11 +105,11 @@ class Solution:
         # base case: when the array has more than one element
         if low<high:
             # Place a pivot at it's correct place
-            partition_ind = self.partition(arr,low,high)
+            pI = self.partition(arr,low,high)
 
             # Recursively perform quicksort on pivot's left and right sub-arrays
-            self.quicksort(arr,low,partition_ind-1)
-            self.quicksort(arr,partition_ind+1,high)
+            self.quicksort(arr,low,pI-1)
+            self.quicksort(arr,pI+1,high)
 
 
 ob = Solution()
