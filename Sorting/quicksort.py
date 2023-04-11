@@ -69,45 +69,30 @@ print(f"Array After Quick Sort: {arr}")  # [1, 2, 3, 4, 5, 6, 7, 9]
 import random
 
 class Solution:
-    # function to partition the array
+    
     def partition(self,arr,low,high):
         rand_int = random.randint(low,high)  # Choose random index from low to high
         arr[low],arr[rand_int] = arr[rand_int],arr[low]   # Swap first index element with randomly selected element to make the flow easy
         pivot = low
-
-        # initialize i and j as the start and end indices of the array
         i,j = low,high
 
         # loop until j crosses i
         while i<j:
-            # find element greater than pivot from left(low)
-            # jya sudhi element>pivot na male tya sudhi i ne increment karta rehvanu
             while arr[i] <= arr[pivot] and i <= high-1:
                 i+=1
-
-            # Find element smaller than pivot from right(high)
-            # jya sudhi element <= pivot na male tya sudhi j ne decrement karta rehvanu
             while arr[j] > arr[pivot] and j >= low+1:
                 j-=1
 
-            # If we find both elements i.e. greater on left and smaller on right of pivot then swap them (till this time j hasn't crossed i yet)
             if i<j:
                 arr[i],arr[j] = arr[j],arr[i]
 
-        # Swap pivot element with element at index j (partition index)
-        # All elements on subarray  left of partition index are smaller and right of it are greater
-        # so the partition index is correct position for our pivot.
         arr[pivot],arr[j] = arr[j],arr[pivot]
-        # return the index of pivot element
         return j
 
     def quicksort(self,arr,low,high):
         # base case: when the array has more than one element
         if low<high:
-            # Place a pivot at it's correct place
             pI = self.partition(arr,low,high)
-
-            # Recursively perform quicksort on pivot's left and right sub-arrays
             self.quicksort(arr,low,pI-1)
             self.quicksort(arr,pI+1,high)
 
@@ -115,6 +100,5 @@ class Solution:
 ob = Solution()
 arr = [1,2,3,4,5,6,7]
 print(f"Array Before Quick Sort: {arr}")
-# perform quick sort on the array
 ob.quicksort(arr,0,len(arr)-1)
 print(f"Array After Quick Sort: {arr}")  # [1, 2, 3, 4, 5, 6, 7, 9]
