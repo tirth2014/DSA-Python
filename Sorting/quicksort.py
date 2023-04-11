@@ -102,3 +102,18 @@ arr = [1,2,3,4,5,6,7]
 print(f"Array Before Quick Sort: {arr}")
 ob.quicksort(arr,0,len(arr)-1)
 print(f"Array After Quick Sort: {arr}")  # [1, 2, 3, 4, 5, 6, 7, 9]
+
+
+
+
+# Pythonic quicksort although not in-pace (uses extra space)
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        if len(nums) <= 1: return nums
+        pivot = random.choice(nums)
+        
+        lt = [val for val in nums if val<pivot]
+        eq = [val for val in nums if val==pivot]
+        gt = [val for val in nums if val>pivot]
+
+        return self.sortArray(lt) + eq + self.sortArray(gt)
