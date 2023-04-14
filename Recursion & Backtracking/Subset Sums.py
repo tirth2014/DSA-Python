@@ -34,23 +34,22 @@ Constraints:
 '''
 
 
-class Solution:
-	def subsetSums(self, arr, n):
-	    i,ds,ans = 0, [],[]
+def subsetSums(arr, n):
+    i,ds,ans = 0, [],[]
 
-		def helper(i,ds,ans):
-		    # BASE CASE
-		    if i == n:
-			ans.append(sum(ds))
-			return
+	def helper(i,ds,ans):
+	    # BASE CASE
+	    if i == n:
+		ans.append(sum(ds))
+		return
 
-		    # Pick
-		    ds.append(arr[i])
-		    helper(i+1,ds,ans)
-		    ds.pop()
+	    # Pick
+	    ds.append(arr[i])
+	    helper(i+1,ds,ans)
+	    ds.pop()
 
-		    # Non pick
-		    helper(i+1,ds,ans)
-	
-		helper(i,ds,ans)
-		return ans
+	    # Non pick
+	    helper(i+1,ds,ans)
+
+	helper(i,ds,ans)
+	return ans
