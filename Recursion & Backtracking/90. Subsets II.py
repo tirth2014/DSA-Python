@@ -45,6 +45,14 @@ class Solution:
 
         helper(i,ds,ans)
         return ans
+       
+# The time complexity of this code is O(2^n * n), where n is the length of the input array arr.
+# In each recursive call, we have two choices - either we pick the current element or we don't pick it. 
+# So, the number of recursive calls will be 2^n. For each subset, we also make a copy of the current subset using ds[:], which takes O(n) time. 
+
+# The space complexity of this code is O(n^2). This is because we are using a list ds to store the current subset, which can have at most n elements. 
+# In addition, for each subset, we are making a copy of the current subset using ds[:], which also takes O(n) space. Therefore, the overall space complexity is O(n^2).
+# Note that the use of if ds not in ans also contributes to the time complexity of the code, as it requires iterating over all the elements of ans to check for duplicates.        
       
       
       
