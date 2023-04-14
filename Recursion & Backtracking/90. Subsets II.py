@@ -47,6 +47,8 @@ class Solution:
         return ans
       
       
+      
+      
 # Approach-2: Using for loop from ind -> n-1 in recursion
 class Solution:
     def subsetsWithDup(self, arr: List[int]) -> List[List[int]]:
@@ -69,3 +71,39 @@ class Solution:
 
         findSubsets(ind)
         return ans
+       
+# Time Complexity: O(2^n) for generating every subset and O(k)  to insert every subset in another data structure if the average length of every subset is k. Overall O(k * 2^n).
+# Space Complexity: O(2^n * k) to store every subset of average length k. Auxiliary space is O(n)  if n is the depth of the recursion tree.         
+
+
+
+       
+# Approach-3: Iterative (with Hashing)
+
+# The idea is that we start with an empty subset.
+# For each element num in nums, we iterate all all previous subsets, create new subsets by adding each previous subsets with num.
+# For example: nums = [1, 2, 3]
+# First at all, ans = [[]]
+# Step 1, with nums[0] = 1, ans = [[], [1]]
+# Step 2, with nums[1] = 2, ans = [[], [1], [2], [1, 2]]
+# Step 3, with nums[2] = 3, ans = [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        ans = set()
+        ans.add(tuple())
+
+        for num in nums:
+            new_subsets = set()
+            for subset in ans:
+                new_subsets.add(tuple(list(subset) + [num]))
+            ans.update(new_subsets)
+        return ans
+       
+# Complexity
+
+# Time: O(2^N * N), where N <= 10 is length of nums array.
+# Space: O(2^N)       
+
+                   
