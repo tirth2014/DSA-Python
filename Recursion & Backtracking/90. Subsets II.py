@@ -1,6 +1,5 @@
 '''
-Given an integer array nums that may contain duplicates, return all possible 
-subsets
+Given an integer array nums that may contain duplicates, return all possible subsets
  (the power set).
 
 The solution set must not contain duplicate subsets. Return the solution in any order.
@@ -52,7 +51,7 @@ class Solution:
 
 # The space complexity of this code is O(n^2). This is because we are using a list ds to store the current subset, which can have at most n elements. 
 # In addition, for each subset, we are making a copy of the current subset using ds[:], which also takes O(n) space. Therefore, the overall space complexity is O(n^2).
-# Note that the use of if ds not in ans also contributes to the time complexity of the code, as it requires iterating over all the elements of ans to check for duplicates.        
+# Note that the use of "if ds not in ans" also contributes to the time complexity of the code, as it requires iterating over all the elements of ans to check for duplicates.        
       
       
       
