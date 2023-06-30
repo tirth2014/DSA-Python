@@ -1,3 +1,7 @@
+# Problem - combinations
+# Decision space- numbers from 1 to n without repetition
+# Output- all combinations of numbers from 1 to n of size k
+
 #1 
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
