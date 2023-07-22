@@ -33,6 +33,8 @@ def generateParenthesis(self, n: int) -> List[str]:
         if leftCnt < n:
             helper(s+'(', leftCnt+1, rightCnt)
 
+        # We're allowed to add closing parentheses only if open parentheses count is greater than closed parentheses
+        # for ex. if open = 1 and closed = 1. i.e '()' then we can't add closed parentheses i.e. '())' this will be invalid.
         if rightCnt < leftCnt:
             helper(s+')', leftCnt, rightCnt+1)
 
