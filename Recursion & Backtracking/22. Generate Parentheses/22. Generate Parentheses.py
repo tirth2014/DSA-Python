@@ -27,7 +27,7 @@ class Solution:
 def generateParenthesis(self, n: int) -> List[str]:
     ans = []
     def helper(s,leftCnt,rightCnt):
-        if len(s) == n*2:
+        if leftCnt == rightCnt == n:
             ans.append(s)
           
         if leftCnt < n:
