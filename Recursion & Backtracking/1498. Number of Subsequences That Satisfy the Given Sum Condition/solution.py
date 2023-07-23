@@ -79,3 +79,35 @@ class Solution:
         #  |  Base 0 means to interpret the base from the string as an integer literal.
         #  |  >>> int('0b100', base=0)
         #  |  4
+
+
+
+
+
+# Sorting + Binary Search approach:
+# Time: Beats 5.03% of users with Python3
+# Space: Beats 58.25% of users with Python3
+class Solution:
+    def numSubseq(self, nums: List[int], target: int) -> int:
+        nums, n = sorted(nums), len(nums)
+        ans,mod = 0, 10**9 + 7
+        
+        def binary_search_rightmost(left,right,tar):
+            #Need to find the right boundary
+            #Using the ultimate binary search template
+            # while left != right:  # CAUTION: This condition causes TLE
+            while left <= right:
+                mid = left + (right-left) // 2
+                if nums[mid] <= tar:
+                    left = mid+1
+                else:
+                    right = mid-1
+            return left-1
+
+        for i, num in enumerate(nums):
+            if 2*num > target: break
+            j = binary_search_rightmost(i, n-1,target - num)
+            if j >= i:
+                ans += 2 ** (j-i)
+                ans %= mod
+        return ans%mod
