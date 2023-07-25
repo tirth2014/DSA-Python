@@ -1,3 +1,4 @@
+# Backtracking - 1: (My solution)
 # Beats 8.44%
 class Solution:
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
@@ -43,6 +44,28 @@ class Solution:
 
             #not pick
             helper(i+1, arr, curr_sum)
+
+        helper()
+        return ans
+
+
+# Backtracking - 3:
+# Beats 92.07%
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        ans = []
+
+        def helper(arr=[],start=1,k=k,target=n):
+
+            if k == 0 and target == 0:
+                ans.append(arr[:])
+                return
+
+            if k == 0 or target <= 0:
+                return
+
+            for i in range(start,10):
+                helper(arr+[i],i+1,k-1,target-i)
 
         helper()
         return ans
