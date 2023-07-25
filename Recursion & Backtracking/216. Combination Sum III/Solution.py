@@ -46,3 +46,11 @@ class Solution:
 
         helper()
         return ans
+
+
+from itertools import combinations
+
+# Python library solution. Create all k-combinations of digits and keep those with sum n:
+class Solution:
+    def combinationSum3(self, k, n):
+        return [c for c in combinations(range(1, 10), k) if sum(c) == n]
