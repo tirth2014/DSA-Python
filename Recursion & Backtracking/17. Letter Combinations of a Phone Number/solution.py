@@ -43,6 +43,8 @@ class Solution:
 
 # Backtracking solution
 # Beats 99.57%
+# Time complexity: O(n*4^n)
+# Space complexity: O(4^n)
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
 
@@ -64,3 +66,20 @@ class Solution:
 
         dfs()
         return res
+
+# We can use for loop like this also:
+# Using this is less efficient - beats 30%.
+for ch in string1:
+    path += ch
+    dfs(index+1, path)
+    path = path[:-1]
+
+# Then what's the difference between them?
+# In the original implementation, a new path string is created for each recursive call by appending the current character ch to the path. 
+# The recursive call is then made with the updated path. This way, the correct path for each branch is maintained in the recursion.
+
+# In the proposed implementation, the path is modified in-place by directly appending ch to it, and then the recursive call is made with the updated path. 
+# After the recursive call returns, the last character of the path is removed by doing path = path[:-1]. 
+# This approach is useful to maintain the correct path for each branch in the recursion and revert the path to its original state for the next iteration of the loop.
+
+
