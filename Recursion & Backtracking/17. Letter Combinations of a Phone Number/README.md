@@ -1,8 +1,7 @@
 <h2><a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/">17. Letter Combinations of a Phone Number</a></h2>
 
-![Backtracking](https://img.shields.io/badge/Tag-Backtracking-blue)    ![Difficulty: Medium](https://img.shields.io/badge/Difficulty-Medium-yellow)     ![Likes](https://img.shields.io/badge/Likes-15.8k-green)
+![Backtracking](https://img.shields.io/badge/Tag-Backtracking-blue) ![String](https://img.shields.io/badge/Tag-String-white)    ![Difficulty: Medium](https://img.shields.io/badge/Difficulty-Medium-yellow)     ![Likes](https://img.shields.io/badge/Likes-15.8k-green)
  
-
 <hr>
 <div><p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent. Return the answer in <strong>any order</strong>.</p>
 <p>A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
