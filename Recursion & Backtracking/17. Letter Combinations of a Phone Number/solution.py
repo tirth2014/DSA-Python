@@ -82,4 +82,21 @@ for ch in string1:
 # After the recursive call returns, the last character of the path is removed by doing path = path[:-1]. 
 # This approach is useful to maintain the correct path for each branch in the recursion and revert the path to its original state for the next iteration of the loop.
 
+# ITERATIVE SOLUTION:
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
 
+        mapping = { "2": "abc", "3": "def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
+        res = ['']
+
+        if len(digits) ==0:
+            return []
+            
+        for d in digits:
+            temp = []
+            for s in res:
+                for ch in mapping[d]:
+                    temp.append(s+ch)
+            res = temp
+
+        return res
