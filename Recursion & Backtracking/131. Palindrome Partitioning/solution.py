@@ -33,6 +33,8 @@ if _name_ == '__main__':
 
 # AC backtracking solution:
 # Beats 57.61% of users with Python3
+# Time  Complexity: O(N * (2 ^ N))
+# Space Complexity: O(N * (2 ^ N))
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         ans = []
