@@ -69,10 +69,13 @@ class Solution:
 
         def isSafe(row,col):
             # Optimized approach - O(1) using hashing
+            # For optimization we need to observe this pattern: (row-col) is the same for all upper diagonals and 
+            # (row+col) is the same for all lower diagonals. So, we can use a dictionary to check if any queen is placed already on diagonal
+            # similarly we can use a dictionary to check for the left horizontal side as the row is the same
             # We only need to check the left side as there are no queens placed on the right side columns yet.
 
             # CHECK FOR LEFT UPPER DIAGONAL
-            if upper_diagonal_placed.get((n-1)+(col-row)):
+            if upper_diagonal_placed.get(row-col):
                 return False
 
             # CHECK FOR LEFT SIDE HORIZONTALLY
@@ -96,17 +99,17 @@ class Solution:
                 if isSafe(row,col):
                     # If it's safe to place a queen at position (row, col), mark the cell with 'Q' and update the dictionaries
                     board[row] = board[row][:col] + 'Q' + board[row][col+1:]
+                    upper_diagonal_placed[row-col] = True # All left upper diagonals will have the same (row-col)
                     left_placed[row] = True
-                    lower_diagonal_placed[row+col] = True
-                    upper_diagonal_placed[((n-1) + (col-row))] = True
+                    lower_diagonal_placed[row+col] = True # All left lower diagonals will have same (row+col)
 
                     # Move to the next column (recursively)
                     backtrack(col+1)
 
                     # Backtrack by undoing the changes made to the board and dictionaries to explore other possibilities
+                    upper_diagonal_placed[row-col] = False
                     left_placed[row] = False
                     lower_diagonal_placed[row+col] = False
-                    upper_diagonal_placed[((n-1) + (col-row))] = False
                     board[row] = board[row][:col] + '.' + board[row][col+1:]
 
         # Start the backtracking process from the first column (column 0)
