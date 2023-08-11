@@ -41,7 +41,7 @@ class Solution:
 
 
 # Approach-2: Only pure recursion
-# Inefficient approach ( Fails for cases like Example 5)
+# Inefficient approach ( TLE for cases like Example 5)
 # For each character 'a' in the string, the algorithm will try different word combinations from the word dictionary, 
 # leading to a large number of redundant calculations. As a result, the algorithm's execution time will grow rapidly with the length of the string and the size of the word dictionary.
 # leading to exponential time complexity.
