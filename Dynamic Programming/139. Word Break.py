@@ -47,6 +47,9 @@ class Solution:
 # leading to a large number of redundant calculations. As a result, the algorithm's execution time will grow rapidly with the length of the string and the size of the word dictionary.
 # leading to exponential time complexity.
 
+import ast
+from typing import List
+
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         if not s:
@@ -56,3 +59,15 @@ class Solution:
             if s.startswith(word) and self.wordBreak(s[len(word):], wordDict):
                 return True
         return False
+
+
+if __name__ == '__main__':
+    ob = Solution()
+    i1 = str(input("enter s: "))
+    i2 = input("enter wordDict list: ")
+    # Using Abstract Syntax Trees to safely parse the input string as a Python literal
+    # instead of string it'll be directly parsed as a list.
+    i2 = ast.literal_eval(i2)
+    print("i1: ",i1,"i2: ",i2)
+    ans = ob.wordBreak(i1,i2)
+    print(ans)
