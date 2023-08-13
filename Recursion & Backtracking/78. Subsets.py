@@ -94,4 +94,22 @@ if __name__ == '__main__':
     i1 = ast.literal_eval(i1)
     print("i1: ", i1)
     ans = ob.subsets(i1)
-    print('result:', ans)
+    print('result:', and)
+    
+
+# Iterative Approach:
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = [[]]
+
+        for num in nums:
+            res += [item+[num] for item in res]
+            print(res)
+        
+        return res
+# For understanding iterative approach:
+# nums = [1,2,3]
+# Stdout
+# [[], [1]]
+# [[], [1], [2], [1, 2]]
+# [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]        
