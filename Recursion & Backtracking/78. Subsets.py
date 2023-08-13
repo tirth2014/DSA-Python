@@ -117,6 +117,7 @@ class Solution:
 
 
 # Bit manipulation approach (Iterative):
+# Beats 81.28% of users with Python3
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
