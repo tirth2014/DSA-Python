@@ -114,3 +114,68 @@ class Solution:
 # [[], [1]]
 # [[], [1], [2], [1, 2]]
 # [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]        
+
+
+# Bit manipulation approach (Iterative):
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        # Left shift 1 (01) by n bits
+        p = 1 << n  # same as (2**n) or pow(2,n) which is no. of possible subsets for len n list.
+        res = [[] for _ in range(p)]
+        
+        for i in range(p):
+            for j in range(n):
+                print('i:%s, j: %s, i >> j: %s, (i >> j) & 1: %s' %(i,j,i >> j, (i >> j) & 1))
+                if (i >> j) & 1:
+                    res[i].append(nums[j])
+                    print('res',res)    
+        return res
+
+# Stdout for understanding
+# nums = [1,2,3]
+# i = [0,1,2,3,4,5,6,7]
+# j = [0,1,2]
+# 8
+# i:0, j: 0, i >> j: 0, (i >> j) & 1: 0
+# i:0, j: 1, i >> j: 0, (i >> j) & 1: 0
+# i:0, j: 2, i >> j: 0, (i >> j) & 1: 0
+# i:1, j: 0, i >> j: 1, (i >> j) & 1: 1
+# --> append nums[0] = 1 at index i = 1
+# res [[], [1], [], [], [], [], [], []]
+# i:1, j: 1, i >> j: 0, (i >> j) & 1: 0
+# i:1, j: 2, i >> j: 0, (i >> j) & 1: 0
+# i:2, j: 0, i >> j: 2, (i >> j) & 1: 0
+# i:2, j: 1, i >> j: 1, (i >> j) & 1: 1
+# --> append nums[1] = 2 at index i = 2
+# res [[], [1], [2], [], [], [], [], []]
+# i:2, j: 2, i >> j: 0, (i >> j) & 1: 0
+# i:3, j: 0, i >> j: 3, (i >> j) & 1: 1
+# --> append nums[0] = 1 at index i = 3
+# res [[], [1], [2], [1], [], [], [], []]
+# i:3, j: 1, i >> j: 1, (i >> j) & 1: 1
+# --> append nums[1] = 2 at index i = 3
+# res [[], [1], [2], [1, 2], [], [], [], []]
+# i:3, j: 2, i >> j: 0, (i >> j) & 1: 0
+# i:4, j: 0, i >> j: 4, (i >> j) & 1: 0
+# i:4, j: 1, i >> j: 2, (i >> j) & 1: 0
+# i:4, j: 2, i >> j: 1, (i >> j) & 1: 1
+# --> append nums[2] = 3 at index i = 4
+# res [[], [1], [2], [1, 2], [3], [], [], []]
+# i:5, j: 0, i >> j: 5, (i >> j) & 1: 1
+# res [[], [1], [2], [1, 2], [3], [1], [], []]
+# i:5, j: 1, i >> j: 2, (i >> j) & 1: 0
+# i:5, j: 2, i >> j: 1, (i >> j) & 1: 1
+# res [[], [1], [2], [1, 2], [3], [1, 3], [], []]
+# i:6, j: 0, i >> j: 6, (i >> j) & 1: 0
+# i:6, j: 1, i >> j: 3, (i >> j) & 1: 1
+# res [[], [1], [2], [1, 2], [3], [1, 3], [2], []]
+# i:6, j: 2, i >> j: 1, (i >> j) & 1: 1
+# res [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], []]
+# i:7, j: 0, i >> j: 7, (i >> j) & 1: 1
+# res [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1]]
+# i:7, j: 1, i >> j: 3, (i >> j) & 1: 1
+# res [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2]]
+# i:7, j: 2, i >> j: 1, (i >> j) & 1: 1
+# res [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
