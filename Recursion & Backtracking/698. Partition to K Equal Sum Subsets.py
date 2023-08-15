@@ -105,4 +105,5 @@ if __name__ == '__main__':
 # i: 0, ind: 6, subsets_sum: [5, 4, 5, 5], subsets_sum[i] + nums[ind] = 6
 # i: 1, ind: 6, subsets_sum: [5, 4, 5, 5], subsets_sum[i] + nums[ind] = 5
 # picked nums[ind]=1...subsets_sum[i] += nums[ind]....subsets_sum = [5, 5, 5, 5]
+# All buckets in subsets_sum have target_sum. This means we have successfully Partitioned the nums array to K Equal Sum Subsets
 # result: True
