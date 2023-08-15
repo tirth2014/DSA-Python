@@ -22,7 +22,8 @@ The frequency of each element is in the range [1, 4].
 # Backtracking Pick/Not-pick element Approach
 # Approach: Take subsets_sum list of size k with all values initialized to 0 
 # Now, loop through nums and for element of nums (using ind) loop through subsets_sum (using k) and add current nums element in whichever bucket it's needed 
-# i.e if subsets_sum[i] + nums[ind] <= target_sum then nums[ind] is needed in ith bucket. So, add it there and move on to next ind.
+# i.e if subsets_sum[i] + nums[ind] <= target_sum then nums[ind] is needed in ith bucket. So, add it there and move on to next find.
+# Time Complexity:  O(k^n) in worst case.
 
 import ast
 from typing import List
