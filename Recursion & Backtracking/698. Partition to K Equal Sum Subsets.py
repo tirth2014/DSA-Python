@@ -18,9 +18,14 @@ Constraints:
 1 <= nums[i] <= 104
 The frequency of each element is in the range [1, 4].
 """
+
+# Backtracking Pick/Not-pick element Approach
+# Approach: Take subsets_sum list of size k with all values initialized to 0 
+# Now, loop through nums and for element of nums (using ind) loop through subsets_sum (using k) and add current nums element in whichever bucket it's needed 
+# i.e if subsets_sum[i] + nums[ind] <= target_sum then nums[ind] is needed in ith bucket. So, add it there and move on to next ind.
+
 import ast
 from typing import List
-
 
 class Solution:
     def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:
@@ -66,4 +71,38 @@ if __name__ == '__main__':
     i2 = int(input("Enter k: "))
     print("i1: ", i1)
     ans = ob.canPartitionKSubsets(i1, i2)
-    print('result:', ans)
+    print('result:', and)
+
+
+
+# Dry run code for understanding backtracking approach:
+# enter nums list: [4,3,2,3,5,2,1]
+# Enter k: 4
+# sorted nums: [5, 4, 3, 3, 2, 2, 1], subsets_sum:[0, 0, 0, 0]
+# i: 0, ind: 0, subsets_sum: [0, 0, 0, 0], subsets_sum[i] + nums[ind] = 5
+# picked nums[ind]=5...subsets_sum[i] += nums[ind]....subsets_sum = [5, 0, 0, 0]
+# i: 0, ind: 1, subsets_sum: [5, 0, 0, 0], subsets_sum[i] + nums[ind] = 9
+# i: 1, ind: 1, subsets_sum: [5, 0, 0, 0], subsets_sum[i] + nums[ind] = 4
+# picked nums[ind]=4...subsets_sum[i] += nums[ind]....subsets_sum = [5, 4, 0, 0]
+# i: 0, ind: 2, subsets_sum: [5, 4, 0, 0], subsets_sum[i] + nums[ind] = 8
+# i: 1, ind: 2, subsets_sum: [5, 4, 0, 0], subsets_sum[i] + nums[ind] = 7
+# i: 2, ind: 2, subsets_sum: [5, 4, 0, 0], subsets_sum[i] + nums[ind] = 3
+# picked nums[ind]=3...subsets_sum[i] += nums[ind]....subsets_sum = [5, 4, 3, 0]
+# i: 0, ind: 3, subsets_sum: [5, 4, 3, 0], subsets_sum[i] + nums[ind] = 8
+# i: 1, ind: 3, subsets_sum: [5, 4, 3, 0], subsets_sum[i] + nums[ind] = 7
+# i: 2, ind: 3, subsets_sum: [5, 4, 3, 0], subsets_sum[i] + nums[ind] = 6
+# i: 3, ind: 3, subsets_sum: [5, 4, 3, 0], subsets_sum[i] + nums[ind] = 3
+# picked nums[ind]=3...subsets_sum[i] += nums[ind]....subsets_sum = [5, 4, 3, 3]
+# i: 0, ind: 4, subsets_sum: [5, 4, 3, 3], subsets_sum[i] + nums[ind] = 7
+# i: 1, ind: 4, subsets_sum: [5, 4, 3, 3], subsets_sum[i] + nums[ind] = 6
+# i: 2, ind: 4, subsets_sum: [5, 4, 3, 3], subsets_sum[i] + nums[ind] = 5
+# picked nums[ind]=2...subsets_sum[i] += nums[ind]....subsets_sum = [5, 4, 5, 3]
+# i: 0, ind: 5, subsets_sum: [5, 4, 5, 3], subsets_sum[i] + nums[ind] = 7
+# i: 1, ind: 5, subsets_sum: [5, 4, 5, 3], subsets_sum[i] + nums[ind] = 6
+# i: 2, ind: 5, subsets_sum: [5, 4, 5, 3], subsets_sum[i] + nums[ind] = 7
+# i: 3, ind: 5, subsets_sum: [5, 4, 5, 3], subsets_sum[i] + nums[ind] = 5
+# picked nums[ind]=2...subsets_sum[i] += nums[ind]....subsets_sum = [5, 4, 5, 5]
+# i: 0, ind: 6, subsets_sum: [5, 4, 5, 5], subsets_sum[i] + nums[ind] = 6
+# i: 1, ind: 6, subsets_sum: [5, 4, 5, 5], subsets_sum[i] + nums[ind] = 5
+# picked nums[ind]=1...subsets_sum[i] += nums[ind]....subsets_sum = [5, 5, 5, 5]
+# result: True
