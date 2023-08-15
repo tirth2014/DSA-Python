@@ -12,7 +12,7 @@ Backtracking is a powerful algorithmic technique used to solve problems by syste
 
 3. **Combination Generation:**
    - Generating combinations of elements from a given set.
-   - Problems: Combinations, Combinations Sum III, Combination Sum IV.
+   - Problems: Combinations, Combinations Sum III, Combination Sum IV, Generate Parentheses
 
 4. **N-Queens:**
    - Placing N queens on an NxN chessboard such that no two queens threaten each other.
