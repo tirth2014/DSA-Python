@@ -112,6 +112,43 @@ if __name__ == '__main__':
 
 
 # Optimal
-# DP with Bit Masking Solution:
+# Bottom-up DP [tabulation] + Bit Masking Solution:
+# Time complexity: O( k^(2^n) *n) but for dp memorization [top-down] - O( 2^n * n ) 
 # dp[i] indicates whether an array of length i can be partitioned into k subsets of equal sum. 
 # Using this technique, the last index of this dp array will tell whether the whole array can be partitioned into k subsets of equal sum.
+class Solution:
+    def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:
+        total_sum = sum(nums)
+        target_sum = total_sum // k
+        n = len(nums)
+
+        # Check if the total sum is divisible by k and if any element is larger than the target sum
+        if total_sum % k != 0 or max(nums) > target_sum:
+            return False
+
+        # Starting with bigger ones makes it a lot faster. big numbers are the easiest to place.
+        # Always start with big numbers for this kind of problems
+        nums.sort(reverse=True) # Game Changer 1
+
+        # Initialize dp array of size (2**n) which is total no. of possible subsets (powerset)
+        dp = [False] * (1 << n)
+        dp[0] = True
+        subsets_sum = [0] * (1<<n)
+        # i = mask
+        for i in range(1<<n): # Loop over all possible subsets represented by bitmasks
+            # If the current subset is valid
+            if dp[i]:
+                # Loop over each element of nums to consider adding it to the subset
+                for ind in range(n):
+                    # If current element not already included (i.e. ind bit not already set in i)
+                    if (i & (1 << ind)) == 0:
+                        # check if nums[ind] is <= remaining space available in the current subset
+                        # Ex: target_sum = 5, subsets_sum[i]=2 will give... 2%5 = 3. So, 5-3 = 2 = remaining space available
+                        if nums[ind] <= (target_sum - subsets_sum[i] % target_sum):
+                            new_mask = i | (1 << ind)
+                            dp[new_mask] = True
+                            subsets_sum[new_mask] = subsets_sum[i] + nums[ind]
+                        else:
+                            # If the element cannot fit into the current subset, skip to the next subset
+                            break
+        return dp[(1<<n)-1]
