@@ -180,3 +180,99 @@ class Solution:
 # i:7, j: 2, i >> j: 1, (i >> j) & 1: 1
 # res [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
+
+
+# Bit manipulation-2:
+# Beats 92.68% of users with Python3 
+# Algorithm:
+
+#Bit serial mapping
+# The bit serial from 0 to 2^n - 1 can be mapped to element selection for subset generation.
+
+# Take nums = [1,2,3] for example.
+
+# size of input = 3.
+# Thus, we go through bit serial from 0 to 2^3 -1 = ( 1 << 3 ) - 1 = 7, then getting corresponding subset on the fly.
+
+# 0 = 0b 000 = empty set = [ ]
+# 1 = 0b 001 = select first element = [ 1 ]
+# 2 = 0b 010 = select second element = [ 2 ]
+# 3 = 0b 011 = select first and second elements = [ 1, 2 ]
+# 4 = 0b 100 = select third element = [ 3 ]
+# 5 = 0b 101 = select first and third elements = [ 1, 3 ]
+# 6 = 0b 110 = select second and third elements = [ 2, 3 ]
+# 7 = 0b 111 = select all elements = [ 1, 2 ,3 ]
+
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        power = 1 << n
+        res = []
+
+        # i = Subset Bit serial number
+        for i in range(power):
+            curr_subset = []
+            for ind in range(n):
+                # Add nums[ind] to curr_subset if ind bit is set in i
+                if i & 1<<ind:
+                    curr_subset.append(nums[ind])
+            res.append(curr_subset) 
+        return res
+
+# Dry Run:
+# i: 0, ind: 0, bin(i): 0b0, i & 1<<ind: 0: 
+# i: 0, ind: 1, bin(i): 0b0, i & 1<<ind: 0: 
+# i: 0, ind: 2, bin(i): 0b0, i & 1<<ind: 0: 
+# res [[]]
+# i: 1, ind: 0, bin(i): 0b1, i & 1<<ind: 1: 
+# i: 1, ind = 0,nums[ind]: 1
+# curr_subset [1]
+# i: 1, ind: 1, bin(i): 0b1, i & 1<<ind: 0: 
+# i: 1, ind: 2, bin(i): 0b1, i & 1<<ind: 0: 
+# res [[], [1]]
+# i: 2, ind: 0, bin(i): 0b10, i & 1<<ind: 0: 
+# i: 2, ind: 1, bin(i): 0b10, i & 1<<ind: 2: 
+# i: 2, ind = 1,nums[ind]: 2
+# curr_subset [2]
+# i: 2, ind: 2, bin(i): 0b10, i & 1<<ind: 0: 
+# res [[], [1], [2]]
+# i: 3, ind: 0, bin(i): 0b11, i & 1<<ind: 1: 
+# i: 3, ind = 0,nums[ind]: 1
+# curr_subset [1]
+# i: 3, ind: 1, bin(i): 0b11, i & 1<<ind: 2: 
+# i: 3, ind = 1,nums[ind]: 2
+# curr_subset [1, 2]
+# i: 3, ind: 2, bin(i): 0b11, i & 1<<ind: 0: 
+# res [[], [1], [2], [1, 2]]
+# i: 4, ind: 0, bin(i): 0b100, i & 1<<ind: 0: 
+# i: 4, ind: 1, bin(i): 0b100, i & 1<<ind: 0: 
+# i: 4, ind: 2, bin(i): 0b100, i & 1<<ind: 4: 
+# i: 4, ind = 2,nums[ind]: 3
+# curr_subset [3]
+# res [[], [1], [2], [1, 2], [3]]
+# i: 5, ind: 0, bin(i): 0b101, i & 1<<ind: 1: 
+# i: 5, ind = 0,nums[ind]: 1
+# curr_subset [1]
+# i: 5, ind: 1, bin(i): 0b101, i & 1<<ind: 0: 
+# i: 5, ind: 2, bin(i): 0b101, i & 1<<ind: 4: 
+# i: 5, ind = 2,nums[ind]: 3
+# curr_subset [1, 3]
+# res [[], [1], [2], [1, 2], [3], [1, 3]]
+# i: 6, ind: 0, bin(i): 0b110, i & 1<<ind: 0: 
+# i: 6, ind: 1, bin(i): 0b110, i & 1<<ind: 2: 
+# i: 6, ind = 1,nums[ind]: 2
+# curr_subset [2]
+# i: 6, ind: 2, bin(i): 0b110, i & 1<<ind: 4: 
+# i: 6, ind = 2,nums[ind]: 3
+# curr_subset [2, 3]
+# res [[], [1], [2], [1, 2], [3], [1, 3], [2, 3]]
+# i: 7, ind: 0, bin(i): 0b111, i & 1<<ind: 1: 
+# i: 7, ind = 0,nums[ind]: 1
+# curr_subset [1]
+# i: 7, ind: 1, bin(i): 0b111, i & 1<<ind: 2: 
+# i: 7, ind = 1,nums[ind]: 2
+# curr_subset [1, 2]
+# i: 7, ind: 2, bin(i): 0b111, i & 1<<ind: 4: 
+# i: 7, ind = 2,nums[ind]: 3
+# curr_subset [1, 2, 3]
+# res [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
