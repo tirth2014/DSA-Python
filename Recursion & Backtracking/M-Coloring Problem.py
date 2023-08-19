@@ -46,6 +46,7 @@ if __name__ == '__main__':
         # Check if any adjacent vertex in graph has same color 
         def same_adj_vertex_color(ind_v, color):
             for ind_g in range(len(graph[0])):
+                # vertex ind_v and ind_g are adjacent if they have an edge between them
                 if graph[ind_v][ind_g] == 1:
                     if assigned_colors[ind_g] == color:
                         return True
