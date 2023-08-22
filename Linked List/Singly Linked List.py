@@ -18,6 +18,23 @@ Access	Search	Insertion  Deletion
 
 from typing import Any
 
+"""
+Using property function of python for getter,setter methods
+
+class Node:
+    def __init__(self, data: Any):
+        self._data = data
+        self.next = None
+
+    @property
+    def data(self):
+        return self._data
+
+    @data.setter
+    def data(self, data=None):
+        self._data = data
+"""
+
 
 class Node:
     def __init__(self, data: Any):
