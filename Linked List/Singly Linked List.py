@@ -102,10 +102,13 @@ class LinkedList:
             print(temp.data, end=" ")
             temp = temp.next
 
-    def insert_at_end(self, data: Any) -> None:
-        new_node = Node(data)
+    def insert_at_end(self, val: Any) -> None:
+        new_node = ListNode(val)
+        if not self.head:
+            self.head = new_node
+            return
         temp = self.head
-        while temp.next:
+        while temp and temp.next:
             temp = temp.next
         temp.next = new_node
         new_node.next = None
