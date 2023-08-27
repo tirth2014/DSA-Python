@@ -37,18 +37,18 @@ class LinkedList:
             print(temp.val, end=" ")
             temp = temp.next
           
-
+# Beats 94.12% of users with Python3
 class Solution:
   
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next:
+        if not head or not head.next or not head.next.next:
             return head
 
         prev_o = head # start from index 1 for odd
-        curr_o = prev_o and prev_o.next and prev_o.next.next or None
+        curr_o = prev_o.next.next  # second odd node in ll
 
         first_even = prev_e = head.next # start from second node for even and store first_even node so as to connect it with last odd node in the end.
-        curr_e = prev_e and prev_e.next and prev_e.next.next or None # second even indexed node in ll
+        curr_e = prev_e.next.next # second even node in ll
 
         # group all odd nodes and group all even nodes
         while curr_e or curr_o:
@@ -60,8 +60,6 @@ class Solution:
 
             curr_o = curr_o and curr_o.next and curr_o.next.next or None  # go to next odd node and None at last
             curr_e = curr_e and curr_e.next and curr_e.next.next or None # go to next even node and None at last
-
-        prev_o.next = None # Make last node of odd nodes group point to None
         prev_o.next = first_even # Connect odd nodes group with even nodes group
         return head
 
