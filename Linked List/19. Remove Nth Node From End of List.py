@@ -45,6 +45,33 @@ class Solution:
         return self.reverse_ll(reversed_head)
 
 
+# Approach - 2: 
+# Find ll length first and then find nth node to remove from start.
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        if not head or not head.next:
+            return None
+
+        temp,ll_len = head, 0
+
+        while temp:
+            ll_len += 1
+            temp = temp.next
+        
+        n_from_left = ll_len - n
+
+        if n_from_left == 0:
+            return head.next
+        prev = head
+        
+        while n_from_left != 1:
+            n_from_left -= 1
+            prev = prev.next
+        
+        prev.next = prev.next.next
+
+        return head
+
 
       
 # Follow up: Could you do this in one pass?
