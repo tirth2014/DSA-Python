@@ -1,4 +1,6 @@
 # https://leetcode.com/problems/odd-even-linked-list/description/
+# Companies asked in:  Amazon  Adobe  eBay  tiktok
+
 # Time Complexity of oddEvenList: O(n)
 # Space Complexity of oddEvenList: O(1)
 
