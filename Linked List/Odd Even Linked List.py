@@ -76,4 +76,32 @@ if __name__ == '__main__':
     ans = ob.oddEvenList(ll.head)
     print()
     ll.print_linked_list()
-    print('\n', ans)
+    print('\n', and)
+
+
+
+
+
+# Another short readable approach with same complexity:
+
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # If there are less than 3 nodes, no reordering is needed
+        if not head or not head.next or not head.next.next:
+            return head
+
+        # Initialize pointers for odd and even nodes
+        even_start = head.next
+        odd = head
+        even = even_start
+
+        while even and even.next:
+            odd.next = even.next # Connect odd nodes
+            odd = odd.next
+
+            even.next = odd.next # Connect even nodes
+            even = even.next
+        
+        odd.next = even_start # Connect the odd nodes group with even nodes group
+        return head
+
