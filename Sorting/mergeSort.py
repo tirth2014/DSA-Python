@@ -39,7 +39,7 @@ def mergeSort(arr):
                 j += 1
             k += 1
         
-        # Checking if any element was left
+        # Checking if any element was left (in case of unequal length of left & right arrays)
         while i < len(L):
             arr[k] = L[i]
             i += 1
