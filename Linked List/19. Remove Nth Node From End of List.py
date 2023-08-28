@@ -7,7 +7,7 @@
 #         self.next = next
 
 # Approach-1 ( 3 pass ):
-# Time Complexity: O(N)
+# Time Complexity: O(3N) ~= O(N)
 # Space Complexity: O(1)
 
 # 1. Reverse the ll -                                                             O(N)
@@ -45,7 +45,10 @@ class Solution:
         return self.reverse_ll(reversed_head)
 
 
+
 # Approach - 2: 
+# Time Complexity: O(2N) ~= O(N)
+# Space Complexity: O(1)
 # Find ll length first and then find nth node to remove from start.
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
@@ -75,3 +78,42 @@ class Solution:
 
       
 # Follow up: Could you do this in one pass?
+
+# Approach - 3 (One pass): 
+# Time Complexity: O(N)
+# Space Complexity: O(1)
+
+# Using slow,fast pointers
+# Move fast pointer n steps first
+# then move slow and fast by 1 step till fast reaches end
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        if not head or not head.next:
+            return None
+
+        start = ListNode()
+        start.next = head
+        slow = fast = start
+
+        # Move fast to nth node from start
+        for _ in range(n):
+            fast = fast.next
+
+        # Move slow and fast by 1 step till fast reaches last node
+        while fast and fast.next:
+            fast = fast.next
+            slow = slow.next
+
+        # Delete the nth node from last
+        slow.next = slow.next.next
+
+        # Edge case:  ll = [1,2], n=2, then slow won't advance and will be at start only.
+        # So, slow.next = slow.next.next will remove 2nd node from last (1st from start).
+        # So, start's next will be at last node and head at first node. So, returning head will result in wrong ans.
+        return start.next
