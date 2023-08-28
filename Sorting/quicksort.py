@@ -42,13 +42,13 @@ class Solution:
             self.quicksort(arr,low,pI-1)
             self.quicksort(arr,pI+1,high)
 
-
-ob = Solution()
-arr = [4,6,2,5,7,9,1,3]
-print(f"Array Before Quick Sort: {arr}")
-# perform quick sort on the array
-ob.quicksort(arr,0,len(arr)-1)
-print(f"Array After Quick Sort: {arr}")  # [1, 2, 3, 4, 5, 6, 7, 9]
+if __name__ == '__main__':
+    ob = Solution()
+    arr = [4,6,2,5,7,9,1,3]
+    print(f"Array Before Quick Sort: {arr}")
+    # perform quick sort on the array
+    ob.quicksort(arr,0,len(arr)-1)
+    print(f"Array After Quick Sort: {arr}")  # [1, 2, 3, 4, 5, 6, 7, 9]
 
 
 # The time complexity of the quicksort algorithm is O(nlogn) in the average case and O(n^2) in the worst case, where n is the size of the input array. 
