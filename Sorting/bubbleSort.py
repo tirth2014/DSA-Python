@@ -23,7 +23,7 @@ if __name__ == "__main__":
     
 
 # Optimized Bubble Sort
-# The above function always runs O(N2) time even if the array is sorted. 
+# The above function always runs O(N^2) time even if the array is sorted. 
 # It can be optimized by stopping the algorithm if the inner loop didn’t cause any swap. 
 
 def bubbleSort(arr):
