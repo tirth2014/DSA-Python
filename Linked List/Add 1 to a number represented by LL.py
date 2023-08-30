@@ -1,4 +1,4 @@
-# Approach - 1:
+# Approach - 1 (Iterative):
 # 1. Reverse LL
 # 2. Add 1 to the number
 # 3. Again reverse LL to get incremented original number
