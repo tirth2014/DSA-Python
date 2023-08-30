@@ -1,3 +1,10 @@
+# Approach - 1:
+# 1. Reverse LL
+# 2. Add 1 to the number
+# 3. Again reverse LL to get incremented original number
+# Time Complexity  : O(3N) ~= O(N)
+# Space Complexity : O(1)
+
 from typing import Optional, Any
 
 # Definition for node of singly-linked list.
@@ -30,14 +37,6 @@ class LinkedList:
             print(temp.data, end=" ")
             temp = temp.next
         print()
-
-
-# Approach - 1:
-# 1. Reverse LL
-# 2. Add 1 to the number
-# 3. Again reverse LL to get incremented original number
-# Time Complexity  : O(3N) ~= O(N)
-# Space Complexity : O(1)
 
 class Solution:
     def reverse_ll(self,head):
