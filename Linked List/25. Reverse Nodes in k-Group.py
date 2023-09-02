@@ -152,3 +152,47 @@ if __name__ == '__main__':
     newhead = ob.reverseKGroup(ll.head, k)
     ll.print_linked_list(newhead)
 
+
+
+
+
+
+# RECURSIVE SOLUTION:
+# Time Complexity  : O(N)
+# Space Complexity : O(N/k)
+# The maximum depth of the recursion stack is determined by the number of k-group segments in the input list. 
+# In the worst case, when k divides evenly into the length of the list (e.g., k=3 for a list of length 9), there will be n/k recursive calls. 
+# Therefore, the maximum depth of the recursion stack is O(n/k).
+
+class Solution:
+    def reverseKGroup(self, head, k):
+        # Return the same list if k is 1
+        if k == 1:
+            return head
+            
+        curr = head
+        count = 0
+
+        while curr and count != k:
+            curr = curr.next
+            count += 1
+
+        # "curr" points to (k+1)th node. i.e next group's first node.
+        # So that we can pass it in recursive call and can return it when coming out of recursion.
+        # This will help us to connect the previous group with next group
+        if count == k:
+            # Recursive call
+            curr_rev = self.reverseKGroup(head=curr, k=k)  # Next group's reversed head will come here
+            curr_orig = head  # Current group original head
+
+            # Reverse the current group nodes
+            while count > 0:
+                nxt = curr_orig.next
+                curr_orig.next = curr_rev  # Connect current original head to next group's reversed head
+                curr_rev = curr_orig  # Previous node
+                curr_orig = nxt
+                count -= 1
+            head = curr_rev
+
+        # Base case - Return the head node of last part
+        return head  # Return current group's reversed head to previous recursion call for previous group
