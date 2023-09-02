@@ -1,7 +1,7 @@
 """
 Solution:  Brute Force -> Gives TLE
 Approach:  For each k, find the last element from the list. Move it to the first.
-Time Complexity  : O(k x N)
+Time Complexity  : O(k*N)
 Space Complexity : O(1)      
 """
 
@@ -79,10 +79,14 @@ if __name__ == '__main__':
     ll.print_linked_list(newhead)
     # print('\n', and)
 
+
+
+
 """
-Optimized Recursive Approach
-Time Complexity  : O(N)
-Space Complexity : O(k)   
+Brute-force Recursive:
+Time Complexity  : O(k*N)
+Space Complexity : O(k)
+where k is the number of rotations and N is the number of nodes in the linked list.
 """
 class Solution:
 
@@ -116,6 +120,7 @@ class Solution:
             if cur_k % ll_len == k % ll_len:
                 break
         return head
+
 
 
 """
