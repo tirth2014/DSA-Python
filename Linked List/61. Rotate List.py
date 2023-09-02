@@ -85,7 +85,7 @@ if __name__ == '__main__':
 """
 Brute-force Recursive:
 Time Complexity  : O(k*N)
-Space Complexity : O(k)
+Space Complexity : O(N)
 where k is the number of rotations and N is the number of nodes in the linked list.
 """
 class Solution:
@@ -120,6 +120,7 @@ class Solution:
             if cur_k % ll_len == k % ll_len:
                 break
         return head
+
 
 
 
@@ -160,3 +161,33 @@ class Solution:
         head = temp.next  # Update the head to the node after the new last node
         temp.next = None  # Set the next pointer of the new last node to None to terminate the list
         return head       # Return the new head of the rotated linked list
+
+
+
+
+
+"""
+Solution:  Optimized Recursion
+Time Complexity  : O(N)
+Space Complexity : O(N)      
+"""
+class Solution:
+
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        
+        def recursive_rotate(prev, curr, ll_len):
+            nonlocal head, k
+            if curr.next:
+                recursive_rotate(prev.next, curr.next, ll_len + 1)  # go to next node recursively
+            else:                                                   # arrive at the tail (last node), ready to rotate
+                k = k % ll_len    # always <= ll_len...avoid unnecessary work
+
+            if k > 0:             # get back to lower level of node, rotate at this level if still rotation work left
+                prev.next, curr.next, head, k = None, head, curr, k - 1
+
+        if not head or not head.next or k == 0:
+            return head
+
+        recursive_rotate(prev=head, curr=head.next, ll_len=2)
+
+        return head
