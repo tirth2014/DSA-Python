@@ -1,4 +1,121 @@
+"""
+Solution:  Brute Force -> Gives TLE
+Approach:  For each k, find the last element from the list. Move it to the first.
+Time Complexity  : O(k x N)
+Space Complexity : O(1)      
+"""
 
+from typing import Optional, Any
+
+# Definition for node of singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+# Definition for singly-linked list.
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert_at_end(self, val: Any) -> None:
+        new_node = ListNode(val)
+        if not self.head:
+            self.head = new_node
+            return
+
+        temp = self.head
+        while temp and temp.next:
+            temp = temp.next
+        temp.next = new_node
+        new_node.next = None
+
+    def print_linked_list(self, head=None):
+        temp = head if head else self.head
+        while temp:
+            print(temp.val, end=" ")
+            temp = temp.next
+        print()
+
+    def reverse_ll(self, head):
+        temp = None
+        nxt = head.next
+        while head and head.next:
+            head.next = temp
+            temp = head
+            head = nxt
+            nxt = nxt.next
+        head.next = temp
+        return head
+
+
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head or not head.next or k == 0:
+            return head
+
+        while k:
+            temp = head
+            while temp.next.next:
+                temp = temp.next
+            last = temp.next
+            temp.next = None
+            last.next = head
+            head = last
+            k -= 1
+        return head
+
+
+if __name__ == '__main__':
+    ll = LinkedList()
+    input_string = input("Enter a list of elements separated by spaces or commas: ")
+    ip_lst = list(map(int, input_string.replace(',', ' ').split()))
+    for ele in ip_lst:
+        ll.insert_at_end(ele)
+    ll.print_linked_list()
+    ob = Solution()
+    k = int(input('k: '))
+    newhead = ob.rotateRight(ll.head, k)
+    ll.print_linked_list(newhead)
+    # print('\n', and)
+
+"""
+Optimized Recursive Approach
+Time Complexity  : O(N)
+Space Complexity : O(k)   
+"""
+class Solution:
+
+    def rotate_recurse(self, head, prev, curr, k, ll_len):
+        if not curr.next:
+            ll_len += 1
+            if ll_len == k or (k % ll_len == 0):
+                return head, 0, ll_len
+            curr.next = head
+            head = curr
+            prev.next = None
+            return head, 1, ll_len
+
+        head, cur_k, ll_len = self.rotate_recurse(head, prev.next, curr.next, k, ll_len + 1)
+        
+        while not curr.next and cur_k < k:
+            if cur_k % ll_len == k % ll_len:
+                return head, 0, ll_len
+            curr.next = head
+            head = curr
+            prev.next = None
+            return head, cur_k + 1, ll_len
+        return head, cur_k, ll_len
+
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head
+        cur_k = float('-inf')
+        while cur_k != 0 and cur_k < k:
+            head, cur_k, ll_len = self.rotate_recurse(head, prev=head, curr=head.next, k=k, ll_len=1)
+            if cur_k % ll_len == k % ll_len:
+                break
+        return head
 
 
 """
