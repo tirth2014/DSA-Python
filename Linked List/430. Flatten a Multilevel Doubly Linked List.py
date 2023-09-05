@@ -34,6 +34,9 @@ class Solution:
         res = self.flatten_recursively(head)
         return head
 
+
+
+
 # Recursion-2 (Optimized - beats 100%)
 class Solution:
     def flatten_recursively(self,temp):
@@ -63,7 +66,33 @@ class Solution:
         return head
 
 
-# Using stack and order list
+# Recursion - 3:
+"""
+This function modifies the structure in place. It's not the fastest implementation out there.
+
+The trick to make this work is to add a second parameter to the function signature. 
+A call to flatten(head, rest) will flatten the head and concatenate the rest to the end of it. That allows our recursive definition:
+
+head.next = self.flatten(head.child, self.flatten(head.next,rest))
+
+"""
+class Solution:
+
+    def flatten(self, head: 'Optional[Node]', rest = None) -> 'Optional[Node]':
+        if not head: 
+            return rest
+
+        head.next = self.flatten(head.child, self.flatten(head.next,rest))
+        
+        if head.next:
+            head.next.prev = head
+        head.child = None
+        
+        return head
+        
+
+
+# dfs approach Using stack and order list
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         if not head: return head
@@ -83,6 +112,7 @@ class Solution:
             order[i].child = None
 
         return order[0]
+
 
 
 # dfs approach using stack without maintaining extra order list
