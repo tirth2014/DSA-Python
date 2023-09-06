@@ -1,6 +1,6 @@
 # Hash Map Approach:
-# Time Complexity  : O(2*N)
-# Space Complexity : O(N)    
+# Time Complexity  : O(2*N) ~ O(N)   ...linear time
+# Space Complexity : O(N)            ...linear space
 
 import ast
 from typing import Optional, Any, List
@@ -88,3 +88,48 @@ if __name__ == '__main__':
     ob = Solution()
     newhead = ob.copyRandomList(ll.head)
     ll.print_linked_list(newhead)
+
+
+
+
+# Optimal Solution:
+"""
+Steps:
+1. Create new linked list & Attach nodes of new ll to original ll nodes next
+2. Deal with random pointers 
+3. Separate out original and new ll
+
+# Time Complexity  : O(3*N) ~ O(N)  ...linear time
+# Space Complexity : O(1)           ...constant space
+"""
+
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        # No need to do anything when the head is NULL
+        if not head:
+            return head
+        temp = head
+
+        # Create a new linked list
+        while temp:
+            temp_nxt = temp.next
+            temp.next = ListNode(temp and temp.val) if temp else None
+            temp.next.next = temp_nxt
+            temp = temp_nxt
+
+        # Step 2: Point random pointers in new list
+        temp = head
+        while temp:
+            temp.next.random = temp.random.next if temp.random else None  # temp.next is deep copy node of temp
+            temp = temp.next.next                                         # move temp to next original node
+
+        # Step 3: Separate out original and new linked lists
+        temp = head
+        new_head = head.next
+        while temp:
+            copy_node = temp.next
+            temp.next = copy_node.next              # make temp point to next original node instead of it's copy node
+            copy_node.next = copy_node.next.next if copy_node.next else None    # make copy node point to next copy node instead of next original node
+            temp = temp.next                        # the next original node will be temp now
+
+        return new_head
