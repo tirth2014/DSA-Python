@@ -110,7 +110,7 @@ class Solution:
             return head
         temp = head
 
-        # Create a new linked list
+        # Create a new linked list and also attach deep copy nodes next to their original nodes.
         while temp:
             temp_nxt = temp.next
             temp.next = ListNode(temp and temp.val) if temp else None
