@@ -2,9 +2,9 @@ def swap_numbers(a,b):
     print(f'bfr func a  {id(a)}')
     print(f'bfr func b  {id(b)}')
     
-    ab_xor = a ^ b
-    a ^= ab_xor
-    b ^= ab_xor
+    ab_xor = a ^ b    # ab_xor = 5 ^ 7 = 2
+    a ^= ab_xor       # a = 5 ^ 2 = 7
+    b ^= ab_xor       # b = 7 ^ 2 = 5
     
     print(f'aftr func a  {id(a)}')
     print(f'aftr func b  {id(b)}')
