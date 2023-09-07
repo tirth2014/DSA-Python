@@ -1,3 +1,4 @@
+# Approach:1 - With support of an extra variable
 def swap_numbers(a,b):
     print(f'bfr func a  {id(a)}')
     print(f'bfr func b  {id(b)}')
@@ -40,3 +41,23 @@ if __name__ == "__main__":
 # aftr swap b  9449888
 
 # Python’s argument passing model is neither “Pass by Value” nor “Pass by Reference” but it is “Pass by Object Reference”. 
+
+
+
+# Approach:2 - without using any other variable
+def swap_numbers(a,b):
+    print(f'bfr func a  {id(a)}')
+    print(f'bfr func b  {id(b)}')
+
+    a = a ^ b   # a = 5 ^ 7
+    b = b ^ a   # b = 7 ^ 5 ^ 7 = 5 (as two 7's will cancel out each other)
+    a = a ^ b   # a = 5 ^ 7 ^ 5 = 7 (as two 5's will cancel out each other)
+
+    return a,b
+
+if __name__ == "__main__":
+    a = int(input("a: "))
+    b = int(input("b: "))
+    print(f'\n before swap: a = {a}, b = {b} \n')
+    a,b = swap_numbers(a,b)
+    print(f'\n after swap: a = {a}, b = {b} \n')
