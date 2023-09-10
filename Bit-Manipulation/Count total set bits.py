@@ -1,6 +1,6 @@
 if __name__ == '__main__':
 
-    def set_bits_in_binary(num,res):
+    def set_bits_in_binary(num,res=0):
         if num > 1:
             res = set_bits_in_binary(num >> 1,res)
         if num & 1:
@@ -8,10 +8,9 @@ if __name__ == '__main__':
         return res
 
     def countSetBits(N: int) -> int:
-        res = 0
         for num in range(1, N + 1):
             print(num, end=': ')
-            print(set_bits_in_binary(num,res), end=', ')
+            print(set_bits_in_binary(num), end=', ')
 
     N = int(input("N: "))
     countSetBits(N)
