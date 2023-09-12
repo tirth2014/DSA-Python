@@ -32,6 +32,7 @@ divisor != 0
 """
 
 # Approach-1:
+# Explanation: https://www.youtube.com/watch?v=FrOyj_DKne4
 class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
         if dividend == divisor:
@@ -51,7 +52,8 @@ class Solution:
 
 
 
-#Approach-2: bit manipulation approach:
+# Approach-2: bit manipulation approach:
+# Explanation: https://leetcode.com/problems/divide-two-integers/solutions/1516367/complete-thinking-process-intuitive-explanation-all-rules-followed-c-code/
 class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
         if dividend == divisor:
