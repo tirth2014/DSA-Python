@@ -213,8 +213,8 @@ class Solution:
         for i in range(power):
             curr_subset = []
             for ind in range(n):
-                # Add nums[ind] to curr_subset if ind bit is set in i
-                if i & 1<<ind:
+                # Add nums[ind] to curr_subset if "ind"-th bit of "i" is set to 1.
+                if i & 1 << ind:   # equivalent to -> i & (1 << ind)
                     curr_subset.append(nums[ind])
             res.append(curr_subset) 
         return res
