@@ -52,7 +52,24 @@ if __name__ == '__main__':
     print("ans: ",and)
 
 
+
 # Using python's in-built bit_count() function for finding hamming-weight
 class Solution:
     def minBitFlips(self, start: int, goal: int) -> int:
         return (start ^ goal).bit_count()  # xor of start and goal gives bit flips
+
+
+
+
+# In JS:
+
+var minBitFlips = function(start, goal) {
+    return (start^goal).toString(2).split("0").join("").length;
+};
+
+console.log(minBitFlips(10,7));  // output: 3
+
+// for start = 10(1010) and goal = 7(0111)
+// (start^goal).toString(2) = 1101
+// (start^goal).toString(2).split("0") = ["11","1"]
+// (start^goal).toString(2).split("0").join("") = "111"
