@@ -30,4 +30,4 @@ if __name__ == '__main__':
             print(int(n), end=' ')
 
     n = int(input("n: "))
-    ans = prime_factorization(n)
+    prime_factorization(n)
