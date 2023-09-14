@@ -23,6 +23,7 @@ Constraints:
 
 # Naive (Gives TLE):
 class Solution:
+    
     def isPrime(self,n: int) -> bool:
         if n in [0,1]: return False
         sqrt_n = int(n ** (1/2))  # or int(math.sqrt(n))
@@ -36,7 +37,26 @@ class Solution:
         for num in range(n):
             if self.isPrime(num): cnt += 1
         return cnt
-      
+
+# This also gives TLE
+class Solution:
+    def isPrime(n: int) -> bool:
+        if n in [0,1]: return False
+        elif n in [2,3]: return True
+        elif n % 2 == 0 or n % 3 == 0: return False
+        sqrt_n = int(n ** 0.5)
+        for i in range(5, sqrt_n+1, 6):
+            if n % i == 0 or n % (i+2) == 0:
+                return False
+        return True
+
+    def countPrimes(self, n: int) -> int:
+        cnt = 0
+        for num in range(n):
+            if self.isPrime(num): cnt += 1
+        return cnt
+
+
 
 # Optimal Solution - using Sieve of Eratosthenes
 class Solution:
