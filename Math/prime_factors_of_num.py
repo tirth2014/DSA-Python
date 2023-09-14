@@ -1,3 +1,6 @@
+# T.C: O(n) worst case
+# Worst Case: When "n" is a prime number...outer for loop runs till n
+# Not O(n^2) because the inner while loop reduces "n" everytime
 if __name__ == '__main__':
     def prime_factorization(n):
         for i in range(2,n):
