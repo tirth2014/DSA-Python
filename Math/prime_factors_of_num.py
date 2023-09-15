@@ -41,19 +41,22 @@ if __name__ == '__main__':
 
 if __name__ == '__main__':
     def prime_factorization(n):
+        # Initialize sieve or spf array of size n+1 with the numbers itself
         spf = [i for i in range(n+1)]
-        for el in range(2, int(n**0.5) + 1):
-            i = 2
-            while el*i <= n:
-                if spf[el*i] == el*i:
-                    spf[el*i] = el
-                i += 1
+
+        # Using the concept that smallest prime factor for "n" is <= sqrt(n)
+        for i in range(2, int(n**0.5)+1):
+            if spf[i] == i:
+                # Mark the smallest factor as "i" for all multiples of "i" in the spf array
+                for j in range(i*i,n+1,i):
+                    if spf[j] == j:  # If a number is itself and doesn't already have the smallest prime factor stored.
+                        spf[j] = i
+
         # Our sieve (spf array) is ready to use now with O(1) lookup.
         num = n
-        while num > 1:
+        while num != 1:
             print(spf[num],end=' ')
             num //= spf[num]
-
 
     n = int(input("n: "))
     prime_factorization(n)
