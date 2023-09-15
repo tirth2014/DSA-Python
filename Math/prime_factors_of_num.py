@@ -16,6 +16,7 @@ if __name__ == '__main__':
 # 2 2 2 2 3 
 
 
+
 # A little optimized:
 # T.C: O(sqrt(n)) worst case
 if __name__ == '__main__':
@@ -33,11 +34,14 @@ if __name__ == '__main__':
     prime_factorization(n)
 
 
-# A maximum no. of prime factors a number can have = log2(n)...as 2 is the smallest prime factor for any number.
-# Using this property and Sieve of Eratosthenes...we'll maintain a sieve or spf array (smallest prime factor array)
-# All the numbers in the spf array will have their smallest prime factor...and for prime numbers the number itself.
-# It's the most efficient method to find prime factors of any given number for even larger test cases
+
+# Approach-2: Sieve of Eratosthenes (Most efficient for larger cases)
 """
+A maximum no. of prime factors a number can have = log2(n)...as 2 is the smallest prime factor for any number.
+Using this property...we'll maintain a sieve or spf array (smallest prime factor array)
+All the numbers in the spf array will have their smallest prime factor...and for prime numbers the number itself.
+It's the most efficient method to find prime factors of any given number for even larger test cases
+
 Time Complexity Analysis:
 1. Building the spf Array: This part of the algorithm initializes the spf (smallest prime factor) array by iterating from 2 to the square root of n. 
    For each i in this range, it updates the smallest prime factor for multiples of i. 
