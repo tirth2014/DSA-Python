@@ -36,8 +36,19 @@ if __name__ == '__main__':
 # A maximum no. of prime factors a number can have = log2(n)...as 2 is the smallest prime factor for any number.
 # Using this property and Sieve of Eratosthenes...we'll maintain a sieve or spf array (smallest prime factor array)
 # All the numbers in the spf array will have their smallest prime factor...and for prime numbers the number itself.
-# It's the most efficient method to find prime factors of any given number for even larger testcases
-# Worst Case T.C:  O(log2(n)) i.e. log(n) base 2 
+# It's the most efficient method to find prime factors of any given number for even larger test cases
+"""
+Time Complexity Analysis:
+1. Building the spf Array: This part of the algorithm initializes the spf (smallest prime factor) array by iterating from 2 to the square root of n. 
+   For each i in this range, it updates the smallest prime factor for multiples of i. 
+   This part has a time complexity of O(n*log(log(n))), which is the complexity of the Sieve of Eratosthenes itself.
+
+2. Prime Factorization Loop: After building the spf array, the algorithm performs prime factorization 
+   by repeatedly dividing num by its smallest prime factor (spf[num]) until num becomes 1. 
+   This part of the algorithm takes O(log(n)) time because, in the worst case, you are dividing num by 2 (or its smallest prime factor) repeatedly until it reaches 1.
+
+Overall Time Complexity = O(n*log(log(n)))
+"""
 
 if __name__ == '__main__':
     def prime_factorization(n):
