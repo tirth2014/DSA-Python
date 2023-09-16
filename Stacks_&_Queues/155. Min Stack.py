@@ -32,7 +32,7 @@ class MinStack:
 
 
 
-# Naive approach:
+# Better approach:
 # Pushing tuple of (val, mini) instead of only val in stack
 """
 T.C : O(1)
@@ -63,7 +63,7 @@ class MinStack:
 
 
       
-# Optimal Approach      
+# Best Approach      
 """
 155. Min Stack
 https://leetcode.com/problems/min-stack/description/
