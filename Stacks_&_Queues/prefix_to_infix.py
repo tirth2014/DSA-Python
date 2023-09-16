@@ -1,4 +1,7 @@
 """
+Prefix to Infix
+https://www.geeksforgeeks.org/prefix-infix-conversion/
+
 Algorithm for Prefix to Infix:
 
 -> Read the Prefix expression in reverse order (from right to left)
@@ -37,3 +40,12 @@ while t:
     print('prefix_expression: ', prefix_expression)
     print('infix_expression: ', infix_expr)
     t -= 1
+
+
+# Enter #testcases: 2
+
+# prefix expression: *+AB-CD
+# infix_expression:  ((A+B)*(C-D))
+
+# prefix expression: *-A/BC-/AKL
+# infix_expression:  ((A-(B/C))*((A/K)-L))
