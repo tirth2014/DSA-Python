@@ -67,6 +67,7 @@ class MinStack:
 """
 155. Min Stack
 https://leetcode.com/problems/min-stack/description/
+Striver's explanation: https://www.youtube.com/watch?v=V09NfaGf2ao
 
 T.C : O(1)
 S.C : O(N)
