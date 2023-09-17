@@ -33,6 +33,7 @@ while t:
     t -= 1
 
 
+# OUTPUT
 # Enter #testcases: 2
 
 # postfix expression: AB+CD-*
