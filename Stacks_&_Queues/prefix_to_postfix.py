@@ -1,5 +1,5 @@
 """
-Algorithm for Prefix to Postfix:
+Long cumbersome Algorithm for Prefix to Postfix:
     1. Convert Prefix to Infix
     2. Convert Infix to Postfix
 
@@ -106,7 +106,7 @@ while t:
     t -= 1
 
   
-# Running Example:
+# Example:
 # Enter #testcases: 2
 
 # prefix expression: *+AB-CD
@@ -116,3 +116,40 @@ while t:
 # prefix expression: *-A/BC-/AKL
 # infix_expression:  ((A-(B/C))*((A/K)-L))
 # postfix_expression:  ABC/-AK/L-*
+
+
+
+
+
+"""
+Simple Algorithm for Prefix to Postfix (Direct):
+
+1. Read the Prefix expression in reverse order (from right to left)
+2. If the symbol is an operand, then push it onto the Stack
+3. If the symbol is an operator, then pop two operands from the Stack
+4. Create a string by concatenating the two operands and the operator after them.
+   string = operand1 + operand2 + operator
+   And push the resultant string back to Stack
+=> Repeat the above steps 1-4 until the end of the Prefix expression.
+"""
+
+
+def prefixToPostfix(prefix_expr: str) -> str:
+    stack = []
+    for ch in prefix_expr[::-1]:
+        if ch.isalnum():
+            stack.append(ch)
+        else:
+            # string = operand1 + operand2 + operator
+            st = stack.pop() + stack.pop() + str(ch)
+            stack.append(st)
+    if stack:
+        return stack.pop()
+
+
+t = int(input("Enter #testcases: "))
+while t:
+    prefix_expression = input("\nprefix expression: ")
+    postfix_expression = prefixToPostfix(prefix_expression)
+    print('postfix_expression: ', postfix_expression)
+    t -= 1
