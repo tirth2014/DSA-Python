@@ -32,7 +32,7 @@ class Solution:
 
 
 
-# More optimized
+# Optimal Solution - 1: Two Pass (For LS and RS)
 # Intuition: Pre-compute left-smaller and right-smaller indices using the concept of the next greater element and the next smaller element. 
 # So, we don't need to find separately for each element each time
 # We got rid of the "horizontal_rec_area" method
@@ -89,4 +89,38 @@ if __name__ == '__main__':
         # num = input("num string: ")
         # k = int(input("k: "))
         ans = ob.largestRectangleArea(arr)
-        print(ans)
+        print(and)
+
+
+
+
+# Most Optimal Solution - One pass only
+# Explanation: https://www.youtube.com/watch?v=jC_cWLy7jSI
+
+# Stack maintains indices of buildings with ascending heights. 
+# When adding a new building, pop the building which is taller then new one. 
+# This popped building represents the height of a building with current building (i) as the RIGHT BOUNDARY (right smaller)
+# And the stack top building as the LEFT BOUNDARY (left smaller)
+
+# Time Complexity: O(N) + O (N) 
+# Space Complexity: O(N)
+
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        n = len(heights)
+        res = 0
+        stack = []
+        
+        for i in range(n+1):
+            while stack and (i == n or heights[stack[-1]] >= heights[i]):
+                height = heights[stack[-1]]
+                stack.pop()
+                if stack:
+                    # If there's an index on the stack top then it is left smaller boundary(LS) and RS is i
+                    width = i - stack[-1] - 1
+                else:
+                    width = i
+                res = max(res, width * height)
+            stack.append(i)
+
+        return res
