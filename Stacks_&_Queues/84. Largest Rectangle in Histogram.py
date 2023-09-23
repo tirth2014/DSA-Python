@@ -36,7 +36,7 @@ class Solution:
 # Intuition: Pre-compute left-smaller and right-smaller indices using the concept of the next greater element and the next smaller element. 
 # So, we don't need to find separately for each element each time
 # We got rid of the "horizontal_rec_area" method
-# Time Complexity: O(N)
+# Time Complexity: O(4*N)
 # Space Complexity: O(3*N) where 3 is for the 1.stack, 2.left_smaller array, and 3.right_smaller array
 import ast
 from typing import List
