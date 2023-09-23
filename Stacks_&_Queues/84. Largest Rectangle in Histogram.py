@@ -36,8 +36,8 @@ class Solution:
 # Intuition: Pre-compute left-smaller and right-smaller indices using the concept of the next greater element and the next smaller element. 
 # So, we don't need to find separately for each element each time
 # We got rid of the "horizontal_rec_area" method
-# Time Complexity: O(4*N)
-# Space Complexity: O(3*N) where 3 is for the 1.stack, 2.left_smaller array, and 3.right_smaller array
+# Time Complexity: O(4*N) ~= O(N)
+# Space Complexity: O(3*N) ~= O(N) where 3 is for the 1.stack, 2.left_smaller array, and 3.right_smaller array
 import ast
 from typing import List
 
@@ -54,7 +54,7 @@ class Solution:
         left_smaller, right_smaller, res = [0]*n, [n-1]*n, 0
 
         # Find left smaller boundaries for each element
-        stack = []
+        stack = []  # Increasing monotonic stack
         for i in range(n):
             while stack and heights[stack[-1]] >= heights[i]:
                 stack.pop()
@@ -64,7 +64,7 @@ class Solution:
             stack.append(i)
 
         # Find right smaller boundaries for each element
-        stack = []
+        stack = []  # Decreasing monotonic stack
         for j in range(n-1, -1, -1):
             while stack and heights[stack[-1]] >= heights[j]:
                 stack.pop()
