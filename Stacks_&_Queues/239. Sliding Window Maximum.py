@@ -20,6 +20,38 @@ class Solution:
 
 
 
+# Optimized approach - 1
+# Ideally, we want to be able to access the maximum element in less than O(N) time and updating it in less than O(N) time.
+# One way to achieve this goal is to push the window elements in a max heap and pop the leftmost (first one of last window) element out of the heap when the window slides.
+
+# T.C: O(N * log(K))
+# Iterating through the nums array: This takes O(N) time, as we visit each element once.
+# Within the loop, the main operations are performed:
+# Adding elements to the max-heap (heapq.heappush): This operation takes O(log(K)) time, where K is the size of the sliding window. 
+# In the worst case, it takes logarithmic time to maintain the heap structure.
+# Removing elements from the max-heap (heapq.heappop): This operation also takes O(log(K)) time.
+# In total, we perform the push and pop operations for each element in the array, resulting in a time complexity of O(N * log(K)).
+import heapq
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        heap = []  # min heap, default for heapq
+        max_sliding_window = []
+        for i, curr in enumerate(nums):
+            # Remove elements (out of bound elements) that are no longer in the current window
+            while heap and heap[0][1] < i-k+1:
+                heapq.heappop(heap)
+
+            # Push the current element along with its index (negated for max-heap behavior)
+            heapq.heappush(heap, (-curr, i))
+
+            if i >= k-1:
+                max_sliding_window.append(-heap[0][0]) # Negate to get the actual maximum value
+
+        return max_sliding_window
+
+
+
+# Most optimal approach
 # Larger elements entering window invalidates smaller elements
 # A question we can ask ourselves is "do we need to keep all the window elements in our state?".
 # An important observation is for two elements arr[left] and arr[right], where left < right, arr[left] leaves the window earlier as we slide. 
