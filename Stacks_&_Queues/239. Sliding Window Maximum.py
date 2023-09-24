@@ -31,6 +31,7 @@ class Solution:
 # In the worst case, it takes logarithmic time to maintain the heap structure.
 # Removing elements from the max-heap (heapq.heappop): This operation also takes O(log(K)) time.
 # In total, we perform the push and pop operations for each element in the array, resulting in a time complexity of O(N * log(K)).
+
 import heapq
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
