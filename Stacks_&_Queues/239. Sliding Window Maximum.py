@@ -1,3 +1,22 @@
+# Naive Brute-force solution
+# Find max. element for each window in given array and keep adding it to result.
+# T.C: O(N^2)
+# S.C: O(K)
+
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        max_sliding_window = []
+        for i in range(n - k + 1):
+            max_e = float('-inf')
+            for el in nums[i: i+k]:
+                max_e = max(max_e, el)
+            max_sliding_window.append(max_e)
+
+        return max_sliding_window
+
+
+
 
 # Larger elements entering window invalidates smaller elements
 # A question we can ask ourselves is "do we need to keep all the window elements in our state?".
