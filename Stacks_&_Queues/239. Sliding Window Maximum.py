@@ -20,7 +20,7 @@ class Solution:
 
 
 
-# Optimized approach - 1
+# Optimized approach - 1: Max heap (priority queue)
 # Ideally, we want to be able to access the maximum element in less than O(N) time and updating it in less than O(N) time.
 # One way to achieve this goal is to push the window elements in a max heap and pop the leftmost (first one of last window) element out of the heap when the window slides.
 
