@@ -1,4 +1,5 @@
 # Sliding Window Introduction, Identification And Types
+# Aditya Verma video: https://www.youtube.com/watch?v=EHCGAZBbB88&list=PL_z_8CaSLPWeM8BDJmIYDaoQ5zuwyxnfj&index=1
 
 """
 Problem: We're given an array and an integer s, representing the subarray size. We've to find the maximum sum from all
