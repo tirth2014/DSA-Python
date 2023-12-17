@@ -18,8 +18,8 @@ class Solution:
         dict = {}
         s, res = 0, 0
         dict[0] = 1
-        for i in range(len(nums)):
-            s += nums[i]
+        for num in nums:
+            s += num
             res += dict.get(s - k, 0)
             dict[s] = dict.get(s, 0) + 1
         return res
