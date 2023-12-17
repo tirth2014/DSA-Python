@@ -56,3 +56,7 @@ class Solution:
 
     def numSubarraysWithSum(self, nums: List[int], k: int) -> int:
         return self.subarrs_sum_atmost_k(nums, k) - self.subarrs_sum_atmost_k(nums, k-1)
+
+
+# Why calculating atmost goal or count of subarrays having sum <= goal , not directly equal to goal.?
+# https://leetcode.com/problems/binary-subarrays-with-sum/solutions/2866679/easy-and-detailed-sliding-window-approach-at-most-method-detailed-explanation-c-o-n/
