@@ -1,10 +1,10 @@
 
 import ast
 from typing import List
-import heapq
 
-# Space O(N)
+
 # Time O(N)
+# Space O(N)
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], k: int) -> int:
         # Using prefix sum algorithm
@@ -35,3 +35,24 @@ if __name__ == '__main__':
         k = int(input("goal: "))
         ans = ob.numSubarraysWithSum(arr, k)
         print(ans)
+
+
+
+# Time O(N)
+# Space O(1)
+# Sliding Window Solution
+class Solution:
+    def subarrs_sum_atmost_k(self, nums, k):
+        i = j = res = sum_till = 0
+        n = len(nums)
+        while j < n:
+            sum_till += nums[j]
+            while i <= j and sum_till > k:
+                sum_till -= nums[i]
+                i += 1
+            res += j-i+1  # Add size(window) in res
+            j += 1
+        return res
+
+    def numSubarraysWithSum(self, nums: List[int], k: int) -> int:
+        return self.subarrs_sum_atmost_k(nums, k) - self.subarrs_sum_atmost_k(nums, k-1)
