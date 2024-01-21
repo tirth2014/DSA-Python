@@ -90,24 +90,6 @@ class Solution:
                         required_chars_len += 1
                 i += 1
             j += 1
-
-        # IMP. case for the below loop:
-        # Input: s = "ADOBECODEBANC", t = "ABC"
-        # Output: "BANC"
-        # Here, first res is "ADOBEC" and at last in above loop j will reach to the end of s (13th position)
-        # In that case "while j < n" this condition will be False, so to check further
-        # we need to increase i till it reaches j, to check if better res is possible or not.
-        while i < j:
-            if required_chars_len == 0:
-                curr_len = j-i+1
-                if curr_len < min_len:
-                    min_len = curr_len
-                    res = s[i:j+1]
-            if s[i] in t_counter:
-                t_counter[s[i]] += 1
-                if t_counter[s[i]] > 0:
-                    required_chars_len += 1
-            i += 1
         return res
 
 if __name__ == '__main__':
