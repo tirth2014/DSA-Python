@@ -17,7 +17,7 @@ If there is no such Window in `S` that covers all characters in `T`, return an e
  
  - If `j` is at the end of `T`, calculate the length of the current window `(i - start + 1)` and check if it's shorter than the current minimum window length `ans_len`. If it is, update `ans_len` and `ans` accordingly.
  
- - Increment `j` using modular arithmetic to ensure it wraps around if it reaches the end of `T`.
+ - Increment `j` using modular arithmetic to ensure it wraps around (points back to 0th index) if it reaches the end of `T`.
 
 ```python Python
 # Worst case T.C: O(len(str1) * len(str2)) and if both strings of same length that's O(N^2)
