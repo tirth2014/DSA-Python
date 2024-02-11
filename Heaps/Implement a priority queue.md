@@ -1,7 +1,10 @@
 ## Implement a priority queue
+#### [Problem Link](https://www.codingninjas.com/studio/problems/implement-a-priority-queue-_1743878?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=PROBLEM)
+<br/>
 You have to implement the pop function of Max Priority Queue and implement using a heap.
+<br/>
+<br/>
 
-  
 
 **Functions :**
 
