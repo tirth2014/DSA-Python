@@ -43,6 +43,7 @@ class MinHeap:
     def shift_up(self, i):
         # move up the element from bottop to top
         while i >= 0:
+            # first parent = (len(heap)-2)//2
             parent = (i-1)//2
             if self.heap[i] < self.heap[parent]:
                 self.heap[i], self.heap[parent] = self.heap[parent], self.heap[i]
