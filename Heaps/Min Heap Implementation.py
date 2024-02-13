@@ -29,8 +29,8 @@ class MinHeap:
 
     def heapify(self, i):
         smallest = i
-        left_child = (i*2) + 1
-        right_child = (i*2) + 2
+        left_child = 2*i+1
+        right_child = 2*i+2
         if left_child < self.size and self.heap[left_child] < self.heap[smallest]:
             smallest = left_child
         if right_child < self.size and self.heap[right_child] < self.heap[smallest]:
