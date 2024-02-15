@@ -59,6 +59,34 @@ pivot idx:  `2` &nbsp; pivot:  `1` &nbsp; partition idx:  `0` &nbsp; arr: `[1, 2
 </br>
 </br>
 
+## 1a.
+```py
+def partition(nums, start, end):
+    pivot_ind = random.randint(start, end)
+    pivot = nums[pivot_ind]
+    nums[pivot_ind], nums[start] = nums[start], nums[pivot_ind]  # Swap pivot with start
+
+    pindex = start  # Initialize pindex to start
+
+    for i in range(start + 1, end + 1):
+        if nums[i] <= pivot:
+            pindex += 1
+            nums[i], nums[pindex] = nums[pindex], nums[i]
+
+    nums[start], nums[pindex] = nums[pindex], nums[start]  # Swap pivot back to its final position
+    return pindex
+```
+
+### Input
+arr: `[3,2,1,5,6,4]`
+
+### Output
+
+pivot_ind: `3` &nbsp; pivot: `5`  &nbsp; partition idx:  `4` &nbsp; arr: `[4, 2, 1, 3, 5, 6]`
+
+</br>
+</br>
+
 ## 2.
 
 ```py
