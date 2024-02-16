@@ -10,6 +10,8 @@ Given an array of size n and a range [a, b]. The task is to partition the array 
 The individual elements of three sets can appear in any order. You are required to return the modified array.
 
 Note: The generated output is 1 if you modify the given array successfully.
+
+In case of quicksort kind of partitioning, we won't have range like (a,b) but we will use pivot.
 """
 
 class Solution:
