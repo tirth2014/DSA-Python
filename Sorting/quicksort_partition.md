@@ -173,3 +173,38 @@ arr: `[3,2,1,5,6,4]`
 ### Output
 
 pivot_ind: `1` &nbsp; pivot: `2`  &nbsp; partition idx:  `2` &nbsp; arr: `[1, 2, 3, 5, 6, 4]`
+
+
+</br>
+</br>
+
+## 4. Three Way Partitioning
+> Optimized algo. for cases when a large no. of elements are repeated,
+> in fact that's the best case O(N) for this algorithm. and worst case
+> O(N^2) for single way partition algo.
+
+```py
+def three_way_partition(nums, low, high):
+    # Dutch National Flag Algorithm
+    i, start, end = low, low, high
+    pivot = random.choice(nums)
+
+    while i <= end:
+        if nums[i] < pivot:
+            nums[i], nums[start] = nums[start], nums[i]
+            i += 1
+            start += 1
+
+        elif nums[i] == pivot:
+            i += 1
+
+        elif nums[i] > pivot:
+            nums[i], nums[end] = nums[end], nums[i]
+            end -= 1
+
+    return [start, end]
+
+arr = ast.literal_eval(input("arr: "))
+print('partition idx: ', three_way_partition(arr, 0, len(arr)-1))
+print(arr)
+```
