@@ -85,13 +85,14 @@ Output 2:    </br>
  7  &nbsp; &nbsp;    (A : 3) + (B : 4) </br>
  6   &nbsp; &nbsp;   (A : 2) + (B : 4) </br>
 
-### Explanation 2:
+#### Explanation 2:
 
  10 &nbsp;   (A : 4) + (B : 6)  </br>
  9  &nbsp; &nbsp;   (A : 4) + (B : 5) </br>
  9  &nbsp; &nbsp;   (A : 3) + (B : 6) </br>
  8  &nbsp; &nbsp;  (A : 3) + (B : 5) 
 
+<hr/>
 
 ## Solution (Sort + MaxHeap + HashSet Approach):
 
@@ -150,6 +151,7 @@ if __name__ == '__main__':
   - now, if `i` and `j` both are in the range of `n` then `heappush` diagonals pairs sum and indices. as well as add indices to `idx_done`.
 - Finally, return result.
 
+<hr/>
 
 ## Detailed Approach & Complexity Analysis:
 This solution aims to find the top C pairs of numbers, where each pair consists of one number from list A and one number from list B, such that their sum is the maximum among all possible pairs.
