@@ -154,6 +154,8 @@ if __name__ == '__main__':
 <hr/>
 
 ## Detailed Approach & Complexity Analysis:
+[Video Explanation](https://www.youtube.com/watch?v=yNLu2kJUjjU&pp=ygUYTWF4aW11bSBTdW0gQ29tYmluYXRpb25z) </br>
+
 This solution aims to find the top C pairs of numbers, where each pair consists of one number from list A and one number from list B, such that their sum is the maximum among all possible pairs.
 
 Here's how the approach works:
