@@ -10,6 +10,8 @@ class Solution:
         return [key for key,_ in freq.most_common(k)]
       
 
+
+
 # Time Complexity:   O(n log n)
 # Space Complexity: O(n)      
 class Solution:
@@ -29,7 +31,10 @@ class Solution:
             k-=1
         return res
       
-      
+
+
+
+
 # Time: O(N + KlogN), where N <= 10^5 is length of nums array, K <= N.
 #            => heapify(maxHeap) costs O(N)
 #            => heappop(maxHeap) k times costs O(KlogN)
@@ -51,7 +56,10 @@ class Solution:
         
         return res
         
-        
+
+
+
+
 # Using Bucket Sort - O(N)
 # Space: O(N)  
 # Since the array nums has size of n, the frequency can be up to n.
@@ -86,6 +94,33 @@ class Solution:
 # Bucket is a list of lists...it will store list of all numbers of frequency = freq at index freq.     
 
 
+
+# (OR) same buckets idea, but different coding style:
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # Step 1: Create a dictionary (`mp`) to store the frequency of each element in the array.
+        mp = {}        
+        for num in nums:
+            mp[num] = mp.get(num, 0) + 1
+
+        # Step 2: Create buckets to store elements based on their frequency.
+        buckets = [[] for _ in range(len(nums) + 1)]
+
+        # Step 3: Iterate through the items in `mp` and distribute elements 
+        # into the corresponding buckets based on their frequency.
+        for num, cnt in mp.items():
+            buckets[cnt].append(num)
+
+        # Step 4: Iterate through the buckets from right to left (highest freq. to lowest freq.) 
+        # and append elements to result till k elements are collected.
+        res = []
+        for i in reversed(range(len(buckets))):
+            # Because multiple elements with same freq. will be in same bucket
+            for num in buckets[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res
         
                   
         
