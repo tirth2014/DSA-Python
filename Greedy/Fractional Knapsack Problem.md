@@ -42,6 +42,8 @@ Complete the function **fractionalKnapsack()**  that receives maximum capacity ,
 
 <hr/>
 
+### Sorting approach
+
 ```py
 class Item:
     def __init__(self,val,w):
@@ -92,4 +94,34 @@ if __name__ == '__main__':
 
 # } Driver Code Ends
 
+```
+
+
+### Max-Heap approach:
+
+```py
+import heapq
+
+class Item:
+    def __init__(self,val,w):
+        self.value = val
+        self.weight = w
+        
+class Solution:    
+    #Function to get the maximum total value in the knapsack.
+    def fractionalknapsack(self, W,arr,n):
+        # We want item with highest profit_by_weight ratio on top (root of heap)
+        max_heap = [[-1 * (item.value/item.weight), item.value, item.weight] for item in arr]
+        heapq.heapify(max_heap)
+        max_profit = 0
+        
+        while max_heap:
+            profit_by_weight, value, weight = heapq.heappop(max_heap)
+            if weight <= W:
+                max_profit += value
+                W -= weight
+            else:
+                max_profit += ((W/weight)*value)
+                W = 0
+        return max_profit
 ```
